@@ -9,8 +9,11 @@ import java.awt.Font;
 public class ADRComponent extends JComponent
 {
 //    private Rectangle r;
+    private char[][] map;
     public ADRComponent() {
 //        r = new Rectangle (5, 5, 490, 490);
+        WorldMap wm = new WorldMap(20, 30);
+        map = wm.getMap();
     }
     public void paintComponent(Graphics g) {
         Font f = new Font("Courier", Font.BOLD, 18);
@@ -19,14 +22,12 @@ public class ADRComponent extends JComponent
 //        g2.draw(r);
 //        g2.fill( r );
         g2.setColor( Color.GRAY );
-        WorldMap wm = new WorldMap(30, 30);
         int x = 50;
         int y = 50;
-        char[][] m = wm.getMap();
-        for (int i = 0; i < m.length; i++)  {
-            for (int j = 0; j < m[i].length; j++) {
+        for (int i = 0; i < map.length; i++)  {
+            for (int j = 0; j < map[i].length; j++) {
                 g2.setFont( f );
-                g2.drawString( m[i][j] + "", x + 12 * i, y + 12 * j );
+                g2.drawString( map[i][j] + "", x + 12 * i, y + 12 * j );
             }
         }
     }
