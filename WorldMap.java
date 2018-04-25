@@ -8,7 +8,7 @@ public class WorldMap
         map = new char[width][height];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                map[i][j] = '+';
+                map[j][i] = '+';
             }
         }
     }
