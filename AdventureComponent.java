@@ -50,14 +50,38 @@ public class AdventureComponent extends JComponent
         g2.drawString( "Row: " + player.getPlayerRow(), 475, 100 );
         g2.drawString( "Col: " + player.getPlayerCol(), 475, 115 );
         
+        
+        // Draw map
         g2.setFont( mapFont );
         
         int x = 50;
         int y = 50;
-        for (int i = 0; i < map.length; i++)  {
-            for (int j = 0; j < map[i].length; j++) {
-                g2.drawString( map[i][j].getCharacter() + "", x + 12 * i, y + 12 * j );
+        for (int r = 0; r < map.length; r++)  {
+            for (int c = 0; c < map[r].length; c++) {
+                if (r == player.getPlayerRow() && c == player.getPlayerCol()) {
+                    // draw player
+                    g2.drawString( Square.PLAYER.character() + "", y + 12 * c, x + 12 * r );
+                }
+                else {
+                    g2.drawString( map[r][c].getCharacter() + "", y + 12 * c, x + 12 * r );
+                }
             }
         }
+    }
+    
+    public void movePlayer(Move m) {
+        if (m == Move.UP) {
+            player.moveUp();
+        }
+        else if (m == Move.DOWN) {
+            player.moveDown();
+        }
+        else if (m == Move.LEFT) {
+            player.moveLeft();
+        }
+        else if (m == Move.RIGHT) {
+            player.moveRight();
+        }
+        repaint();
     }
 }

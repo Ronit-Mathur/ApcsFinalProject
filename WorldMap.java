@@ -23,10 +23,9 @@ public class WorldMap
      */
     public WorldMap(int rows, int cols) {
         map = new WorldMapSquare[rows][cols];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                map[j][i] = new WorldMapSquare(Square.PERIOD, 50);
-                
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                map[r][c] = new WorldMapSquare(Square.PERIOD, 50);
             }
         }
     }

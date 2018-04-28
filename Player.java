@@ -114,6 +114,6 @@ public class Player
     }
     
     private boolean checkMove(int r, int c) {
-        return !(r < 0 || r > world.getMapRows() || c < 0 || c > world.getMapCols());
+        return !(r < 0 || r > world.getMapRows() - 1 || c < 0 || c > world.getMapCols() - 1);
     }
 }

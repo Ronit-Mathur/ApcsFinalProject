@@ -5,3 +5,7 @@
 /WorldMap.class
 /WorldMapSquare.class
 /Player.class
+/AdventureFrame$PlayerMovement.class
+/AdventureFrame$PlayerMovementKeyListener.class
+/PlayerMovementKeyListener.class
+/Move.class
