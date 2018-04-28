@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class AdventureFrame extends JFrame
 {
     private AdventureComponent scene;
-    private static final int FRAME_WIDTH = 500;
+    private static final int FRAME_WIDTH = 800;
     private static final int FRAME_HEIGHT = 500;
     
     /**

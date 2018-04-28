@@ -26,7 +26,7 @@ public class AdventureComponent extends JComponent
      */
     public AdventureComponent() {
 //        r = new Rectangle (5, 5, 490, 490);
-        WorldMap wm = new WorldMap(20, 30);
+        WorldMap wm = new WorldMap(31, 31);
         map = wm.getMap();
     }
     
@@ -35,7 +35,7 @@ public class AdventureComponent extends JComponent
      * @param g graphics interface to draw the shapes
      */
     public void paintComponent(Graphics g) {
-        Font f = new Font("Courier", Font.BOLD, 14);
+        Font f = new Font("Courier", Font.BOLD, 12);
         Graphics2D g2 = (Graphics2D) g;
 //        g2.setColor( Color.BLACK );
 //        g2.draw(r);

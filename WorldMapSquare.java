@@ -12,16 +12,16 @@ import java.lang.Math;
  */
 public class WorldMapSquare
 {
-    private char character;
+    private Square square;
     private int danger; 
     
     /**
      * Creates a grid square
-     * @param c the character the square should display
+     * @param s the Square enum the square should display
      * @param d the probability there will be a monster on the square
      */
-    public WorldMapSquare(char c, int d) {
-        character = c;
+    public WorldMapSquare(Square s, int d) {
+        square = s;
         
      // danger level from 0 to 100
         if (d > 100) {
@@ -40,7 +40,15 @@ public class WorldMapSquare
      * @return the character displayed
      */
     public char getCharacter() {
-        return character;
+        return square.character();
+    }
+    
+    /**
+     * Returns the square type
+     * @return the square type
+     */
+    public Square getSquare() {
+        return square;
     }
     
     /**
@@ -54,9 +62,9 @@ public class WorldMapSquare
     
     /**
      * Set a new character to be displayed
-     * @param c a char to set character to
+     * @param s a Square to set character to
      */
-    public void setCharacter(char c) {
-        character = c;
+    public void setCharacter(Square s) {
+        square = s;
     }
 }

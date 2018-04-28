@@ -20,11 +20,16 @@ public class WorldMap
      * @param width width of grid
      * @param height height of grid
      */
-    public WorldMap(int width, int height) {
-        map = new WorldMapSquare[width][height];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                map[j][i] = new WorldMapSquare('+', 50);
+    public WorldMap(int rows, int cols) {
+        map = new WorldMapSquare[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (i == rows / 2 + 1 && j == cols / 2 + 1) {
+                    map[j][i] = new WorldMapSquare(Square.A, 50);
+                }
+                else {
+                    map[j][i] = new WorldMapSquare(Square.PERIOD, 50);
+                }
             }
         }
         setStart(0,0);
