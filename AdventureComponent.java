@@ -5,6 +5,7 @@ import javax.swing.JComponent;
 import java.awt.geom.Ellipse2D;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Label;
 /**
  * 
  *  Draws the Adventure game and controls some of it
