@@ -1,7 +1,8 @@
 import javax.swing.JFrame;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * 
@@ -24,6 +25,8 @@ public class AdventureFrame extends JFrame
     private static final int FRAME_HEIGHT = 500;
 
     private PlayerMovementKeyListener keyListener;
+    
+    private Timer timer;
 
 
     class PlayerMovementKeyListener implements KeyListener
@@ -85,6 +88,17 @@ public class AdventureFrame extends JFrame
         setSize( FRAME_WIDTH, FRAME_HEIGHT );
         keyListener = new PlayerMovementKeyListener();
         scene.addKeyListener( keyListener );
+        
+        TimerTask task = new TimerTask() {
+        	public void run() {
+        		System.out.println("hello");
+        		
+        	}
+        };
+        timer = new Timer("Attack");
+        timer.scheduleAtFixedRate(task, 100, 1000);
+        
         scene.setFocusable( true );
+        
     }
 }

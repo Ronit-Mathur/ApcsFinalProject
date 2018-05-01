@@ -15,6 +15,9 @@ public class Player
     private int playerRow;
     private int playerCol;
     private WorldMap world;
+    private int dmg;
+	public int health;
+	private double cooldown;
     
     /**
      * Constructs player and lets them start somewhere on the grid
@@ -25,6 +28,9 @@ public class Player
         playerRow = r;
         playerCol = c;
         world = w;
+        dmg = 10;
+        health = 100;
+        cooldown = 10;
     }
     
     /**
