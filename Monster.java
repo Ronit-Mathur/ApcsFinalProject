@@ -6,21 +6,29 @@ public class Monster
     public int health;
 
     private double cooldown;
-
+    
+    private int row;
+    
+    private int col;
+    
+    private WorldMap world;
 
     /**
      * @param d
      *            dmg
      * @param h
      *            health
-     * @param c
+     * @param cool
      *            cooldown
      */
-    public Monster( int d, int h, double c )
+    public Monster( int d, int h, double cool, int r, int c, WorldMap w)
     {
         dmg = d;
         health = h;
-        cooldown = c;
+        cooldown = cool;
+        row = r;
+        col = c;
+        world = w;
     }
 
 

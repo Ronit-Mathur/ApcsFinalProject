@@ -16,7 +16,7 @@ public class Player
 
     private int playerCol;
 
-    private WorldMap world;
+    public WorldMap world;
 
     private int dmg;
 
