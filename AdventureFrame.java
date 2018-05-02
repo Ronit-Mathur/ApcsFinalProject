@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 /**
  * 
  * Describes the JFrame the Adventure game should open in Also controls the game
@@ -25,7 +26,7 @@ public class AdventureFrame extends JFrame
     private static final int FRAME_HEIGHT = 500;
 
     private PlayerMovementKeyListener keyListener;
-    
+
     private Timer timer;
 
 
@@ -63,7 +64,6 @@ public class AdventureFrame extends JFrame
             }
 
         }
-        
 
 
         public void keyReleased( KeyEvent k )
@@ -74,7 +74,7 @@ public class AdventureFrame extends JFrame
 
         public void keyTyped( KeyEvent k )
         {
-      
+
         }
     }
 
@@ -89,17 +89,19 @@ public class AdventureFrame extends JFrame
         setSize( FRAME_WIDTH, FRAME_HEIGHT );
         keyListener = new PlayerMovementKeyListener();
         scene.addKeyListener( keyListener );
-        
-        TimerTask task = new TimerTask() {
-        	public void run() {
-        		System.out.println("hello");
-        		
-        	}
+
+        TimerTask task = new TimerTask()
+        {
+            public void run()
+            {
+                System.out.println( "im proud of you son" );
+
+            }
         };
-        timer = new Timer("Attack");
-        timer.scheduleAtFixedRate(task, 100, 1000);
-        
+        timer = new Timer( "Attack" );
+        timer.scheduleAtFixedRate( task, 100, 1000 );
+
         scene.setFocusable( true );
-        
+
     }
 }
