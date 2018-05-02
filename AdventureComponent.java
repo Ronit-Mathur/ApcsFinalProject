@@ -67,9 +67,10 @@ public class AdventureComponent extends JComponent
         g2.setFont( sideFont );
         Rectangle sidebar = new Rectangle(450, 45, 300, 375);
         g2.draw( sidebar );
-        g2.drawString( "Adventure", 475, 85 );
+        g2.drawString( "Cave Adventure", 475, 85 );
         g2.drawString( "Row: " + player.getPlayerRow(), 475, 100 );
         g2.drawString( "Col: " + player.getPlayerCol(), 475, 115 );
+        g2.drawString( "Health: " + player.getHealth(), 475, 130);
     }
     
     public void movePlayer(Move m) {
