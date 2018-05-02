@@ -6,12 +6,13 @@ public class Monster
     public int health;
 
     private double cooldown;
-    
+
     private int row;
-    
+
     private int col;
-    
+
     private WorldMap world;
+
 
     /**
      * @param d
@@ -21,13 +22,13 @@ public class Monster
      * @param cool
      *            cooldown
      */
-    public Monster( int d, int h, double cool, int r, int c, WorldMap w)
+    public Monster( int d, int h, double cool, WorldMap w )
     {
         dmg = d;
         health = h;
         cooldown = cool;
-        row = r;
-        col = c;
+        row = (int)Math.random() * 30;
+        col = (int)Math.random() * 30;
         world = w;
     }
 

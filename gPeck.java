@@ -1,9 +1,11 @@
 
-public class gPeck extends Monster 
+public class gPeck extends Monster
 {
-	public gPeck()
-	{
-		super(10, 300, 1000, Math.random() * 30, Math.random() * 30,);
-	}
-	
+    private static WorldMap world;
+
+    public gPeck()
+    {
+        super( 10, 300, 1000, world );
+    }
+
 }

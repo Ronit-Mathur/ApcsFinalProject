@@ -37,7 +37,7 @@ public class Battle
 
 
     // new vvvv
-    
+
     /**
      * Ending battle Close battle window? or user closes it themselves? >>
      * possibly move to different class
@@ -81,14 +81,15 @@ public class Battle
     /**
      * Player hits spacebar to attack
      * 
-     * @param k triggers event
+     * @param k
+     *            triggers event
      */
     public void attackMade( KeyEvent k )
     {
         int keyCode = k.getKeyChar();
-        if ( keyCode == 32 ) //TODO Convert to GUI
+        if ( keyCode == 32 ) // TODO Convert to GUI
         {
-            
+
             // spacebar to attack
             if ( monster.getHealth() > player.getDamage() )
             {
