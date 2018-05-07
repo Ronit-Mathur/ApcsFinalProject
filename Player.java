@@ -2,7 +2,7 @@
  * 
  * Location of the player on the map
  *
- * @author shannon
+ * @author 
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: ApcsFinalProject
@@ -16,13 +16,15 @@ public class Player
 
     private int playerCol;
 
-    public WorldMap world;
+    private WorldMap world;
 
     private int dmg;
 
-    public int health;
+    private int health;
 
-    private double cooldown;
+    private int cooldown;
+    
+    private int maxHealth;
 
 
     /**
@@ -38,11 +40,13 @@ public class Player
         playerRow = r;
         playerCol = c;
         world = w;
+        
+        // TODO: Make a constructor where you can set this stuff
         dmg = 10;
         health = 100;
         cooldown = 10;
+        maxHealth = 100;
     }
-
 
 
     /**
@@ -164,11 +168,15 @@ public class Player
     }
 
 
-    // new vvv
-
     public int getHealth()
     {
         return health;
+
+    }
+    
+    public int getMaxHealth()
+    {
+        return maxHealth;
 
     }
 
@@ -176,5 +184,10 @@ public class Player
     public int getDamage()
     {
         return dmg;
+    }
+    
+    public int lowerHealth(int d) {
+        health -= d;
+        return health;
     }
 }

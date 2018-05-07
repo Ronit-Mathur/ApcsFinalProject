@@ -67,4 +67,10 @@ public class WorldMapSquare
     public void setCharacter(Square s) {
         square = s;
     }
+    
+ // TODO: Monsters live in the WorldMapSquares
+    public boolean checkMonster() {
+        
+        return true;
+    }
 }

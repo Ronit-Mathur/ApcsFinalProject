@@ -3,45 +3,35 @@ public class Monster
 {
     private int dmg;
 
-    public int health;
+    private int health;
 
-    private double cooldown;
-
-    private int row;
-
-    private int col;
-
-    private WorldMap world;
+    private int cooldown;
 
 
     /**
-     * @param d
-     *            dmg
-     * @param h
-     *            health
-     * @param cool
-     *            cooldown
+     * @param d dmg
+     * @param h health
+     * @param c cooldown
      */
-    public Monster( int d, int h, double cool, WorldMap w )
-    {
+    public Monster(int d, int h, int c) {
         dmg = d;
         health = h;
-        cooldown = cool;
-        row = (int)Math.random() * 30;
-        col = (int)Math.random() * 30;
-        world = w;
+        cooldown = c;
     }
-
-
+    
+    public Monster() {
+        dmg = 5;
+        health = 50;
+        cooldown = 750;
+    }
     /**
-     * @return attack damage dealt by monster
+     * @return damge
      */
     public int getDamage()
     {
         return dmg;
     }
-
-
+    
     /**
      * @return health remaining
      */
@@ -49,14 +39,18 @@ public class Monster
     {
         return health;
     }
-
-
+    
     /**
      * @return Cooldown for attack
      */
-    public double getCool()
+    public int getCool()
     {
         return cooldown;
+    }
+    
+    public int lowerHealth(int d) {
+        health -= d;
+        return health;
     }
 
 }

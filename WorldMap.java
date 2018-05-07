@@ -63,6 +63,12 @@ public class WorldMap
       }
     }
     
+    public boolean checkMonster(int r, int c) {
+        if (checkValid(r, c)) {
+            return getSquare(r, c).checkMonster();
+        }
+        return false;
+    }
     
     /**
      * Helper method for whether the coordinate is in the map or not
