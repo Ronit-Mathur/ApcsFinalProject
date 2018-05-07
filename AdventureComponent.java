@@ -103,10 +103,7 @@ public class AdventureComponent extends JComponent
     }
     
     public boolean checkMonster() {
-        if (world.checkMonster(player.getPlayerRow(), player.getPlayerCol())) {
-            return true;
-        }
-        return false;
+        return world.checkMonster(player.getPlayerRow(), player.getPlayerCol());
     }
     
     public Player getPlayer() {

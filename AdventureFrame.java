@@ -57,6 +57,7 @@ public class AdventureFrame extends JFrame
                     // S
                     scene.movePlayer( Move.DOWN );
                 }
+                checkMonster();
                 pressed = true;
             }
 
@@ -78,9 +79,13 @@ public class AdventureFrame extends JFrame
     // TODO: Check if you're on a monster. Start battle.
     private void checkMonster() {
         if(scene.checkMonster()) {
-            Monster monster = new Monster();
-            Battle b = new Battle(scene.getPlayer(), monster);
-            b.startBattle();
+            System.out.println("monster");
+//            Monster monster = new Monster();
+//            Battle b = new Battle(scene.getPlayer(), monster);
+//            b.startBattle();
+        }
+        else {
+            System.out.println( "no monster" );
         }
     }
 
