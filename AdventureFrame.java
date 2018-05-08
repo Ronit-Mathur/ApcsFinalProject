@@ -1,8 +1,7 @@
 import javax.swing.JFrame;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -26,8 +25,6 @@ public class AdventureFrame extends JFrame
     private static final int FRAME_HEIGHT = 500;
 
     private PlayerMovementKeyListener keyListener;
-
-    private Timer timer;
 
 
     class PlayerMovementKeyListener implements KeyListener
@@ -60,6 +57,8 @@ public class AdventureFrame extends JFrame
                     // S
                     scene.movePlayer( Move.DOWN );
                 }
+                
+                checkMonster();
                 pressed = true;
             }
 
@@ -78,6 +77,17 @@ public class AdventureFrame extends JFrame
         }
     }
 
+    // TODO: Check if you're on a monster. Start battle.
+    private void checkMonster() {
+        if(scene.checkMonster()) {
+            System.out.println("monster");
+            BattleFrame battle = new BattleFrame();
+            battle.setVisible( true );
+        }
+        else {
+            System.out.println( "no monster" );
+        }
+    }
 
     /**
      * Sets parameters of the JFrame and adds the Adventure game to it
@@ -87,21 +97,12 @@ public class AdventureFrame extends JFrame
         scene = new AdventureComponent();
         add( scene );
         setSize( FRAME_WIDTH, FRAME_HEIGHT );
+        setBackground(Color.WHITE);
+        
         keyListener = new PlayerMovementKeyListener();
         scene.addKeyListener( keyListener );
-
-        TimerTask task = new TimerTask()
-        {
-            public void run()
-            {
-                System.out.println( "im proud of you son" );
-
-            }
-        };
-        timer = new Timer( "Attack" );
-        timer.scheduleAtFixedRate( task, 100, 1000 );
-
+        
         scene.setFocusable( true );
-
+        
     }
 }

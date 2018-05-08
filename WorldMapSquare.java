@@ -55,8 +55,8 @@ public class WorldMapSquare
      * Returns true (danger / 100) the time
      * @return true if there is a monster, false if not
      */
-    public boolean checkDanger() {
-        int d = (int) Math.random() * 101;
+    public boolean checkMonster() {
+        int d = (int) (Math.random() * 101);
         return d < danger;
     }
     
@@ -67,4 +67,5 @@ public class WorldMapSquare
     public void setCharacter(Square s) {
         square = s;
     }
+    
 }

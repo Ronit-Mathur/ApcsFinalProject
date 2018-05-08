@@ -1,9 +1,9 @@
-import java.awt.event.KeyEvent;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
-public class Battle
+public class Battle implements ActionListener
 {
     private Player player;
 
@@ -11,32 +11,22 @@ public class Battle
 
     private Timer timer;
 
-
+    
     public Battle( Player p, Monster m )
 
     {
         player = p;
         monster = m;
+
+        timer = new Timer((int)monster.getCool(), this);
     }
 
 
     public void startBattle()
     {
-        TimerTask task = new TimerTask()
-        {
-            public void run()
-            {
-                monsterAttack();
-                // monster's movement on a timer? or both player and monster?
-            }
-        };
-        timer = new Timer( "Attack" );
-
-        timer.scheduleAtFixedRate( task, 100, 1000 );
+        timer.start();
     }
 
-
-    // new vvvv
 
     /**
      * Ending battle Close battle window? or user closes it themselves? >>
@@ -47,14 +37,17 @@ public class Battle
      */
     public void endBattle( boolean win )
     {
-        timer.cancel();
-        if ( win = true )
+        timer.stop();
+        if ( win )
         {
-            // TODO player win
+            // player win
+            System.out.println( "Player won" );
         }
         else
         {
             // player lose
+            System.out.println( "Player lost" );
+            
         }
     }
 
@@ -64,10 +57,11 @@ public class Battle
      */
     private void monsterAttack()
     {
-        if ( player.getHealth() < monster.getDamage() )
+        System.out.println( "monster attack" );
+        if ( player.getHealth() >= monster.getDamage() )
         {
             // player gets attacked by monster
-            player.health -= monster.getDamage();
+            player.lowerHealth(monster.getDamage());
         }
         else
         {
@@ -75,31 +69,45 @@ public class Battle
         }
     }
 
-    // consolidated playerAttack and attackMade
 
-
-    /**
-     * Player hits spacebar to attack
-     * 
-     * @param k
-     *            triggers event
-     */
-    public void attackMade( KeyEvent k )
+    public void playerAttack()
     {
-        int keyCode = k.getKeyChar();
-        if ( keyCode == 32 ) // TODO Convert to GUI
+        if ( monster.getHealth() >= player.getDamage() )
         {
-
-            // spacebar to attack
-            if ( monster.getHealth() > player.getDamage() )
-            {
-                // player attacks monster
-                monster.health -= player.getDamage();
-            }
-            else
-            {
-                endBattle( true );
-            }
+            // player attacks monster
+            monster.lowerHealth( player.getDamage() );
+        }
+        else
+        {
+            endBattle( true );
         }
     }
+
+
+//    public void attackMade( KeyEvent k )
+//    {
+//        int keyCode = k.getKeyChar();
+//        if ( keyCode == 32 )
+//        {
+//            // spacebar to attack
+//            playerAttack();
+//        }
+//    }
+    
+    @Override
+    public void actionPerformed( ActionEvent e )
+    {
+        monsterAttack();
+        System.out.println( "Player HP: " + player.getHealth() );
+        System.out.println( "Monster HP: " + monster.getHealth() );
+    }
+    
+    // this is to test it
+//    public static void main(String[] args) throws InterruptedException {
+//        Player p = new Player(5,5,null);
+//        Monster m = new Monster();
+//        Battle battle = new Battle(p, m);
+//        battle.startBattle();
+//        Thread.sleep( 5000 );
+//    }
 }
