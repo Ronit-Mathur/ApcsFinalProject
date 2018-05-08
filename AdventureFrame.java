@@ -57,6 +57,7 @@ public class AdventureFrame extends JFrame
                     // S
                     scene.movePlayer( Move.DOWN );
                 }
+                
                 checkMonster();
                 pressed = true;
             }
@@ -80,9 +81,8 @@ public class AdventureFrame extends JFrame
     private void checkMonster() {
         if(scene.checkMonster()) {
             System.out.println("monster");
-//            Monster monster = new Monster();
-//            Battle b = new Battle(scene.getPlayer(), monster);
-//            b.startBattle();
+            BattleFrame battle = new BattleFrame();
+            battle.setVisible( true );
         }
         else {
             System.out.println( "no monster" );
