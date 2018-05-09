@@ -15,14 +15,24 @@ public class BattleControls extends JPanel
 	private ActionListener attack;
 	private ActionListener block;
 
-	public BattleControls() 
+	public BattleControls(Battle battle) 
 	{
 		JButton aButton = new JButton("Attack");
 		JButton bButton = new JButton("Block");
 		attack = new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				System.out.println("Attacked");
+				if ( !battle.checkEnded() )
+				{
+					battle.playerAttack();
+					System.out.println("Attacked");
+					battle.monsterAttack();
+				}
+				else {
+					System.out.println("Not Attacked");
+					// TODO: close window
+				}
+				 //TODO
 			}
 		};
 		aButton.addActionListener(attack);
@@ -30,7 +40,7 @@ public class BattleControls extends JPanel
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				System.out.println("Blocked");
+				System.out.println("Blocked"); //TODO
 			}
 		};
 		bButton.addActionListener(block);

@@ -1,26 +1,30 @@
+import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Battle implements ActionListener
+public class TimerBattle implements ActionListener
 {
     private Player player;
 
     private Monster monster;
-    private boolean ended;
-  
-    public Battle( Player p, Monster m )
+
+    private Timer timer;
+
+    
+    public TimerBattle( Player p, Monster m )
 
     {
         player = p;
         monster = m;
-        ended = false;
+
+        timer = new Timer((int)monster.getCool(), this);
     }
 
 
     public void startBattle()
     {
-    	ended = false;
+        timer.start();
     }
 
 
@@ -33,6 +37,7 @@ public class Battle implements ActionListener
      */
     public void endBattle( boolean win )
     {
+        timer.stop();
         if ( win )
         {
             // player win
@@ -50,20 +55,17 @@ public class Battle implements ActionListener
     /**
      * Monster attacks player Ends battle if monster atkDmg > player health
      */
-    public void monsterAttack()
+    private void monsterAttack()
     {
         System.out.println( "monster attack" );
         if ( player.getHealth() >= monster.getDamage() )
         {
             // player gets attacked by monster
             player.lowerHealth(monster.getDamage());
-            System.out.println("Monster attacked with " + monster.getDamage() + " and the player's health is now " + player.getHealth());
-            
         }
         else
         {
             endBattle( false );
-            ended = true;
         }
     }
 
@@ -74,19 +76,13 @@ public class Battle implements ActionListener
         {
             // player attacks monster
             monster.lowerHealth( player.getDamage() );
-            System.out.println("Player attacked with " + player.getDamage() + " and the monster's health is now " + monster.getHealth());
         }
         else
         {
             endBattle( true );
-            ended = true;
         }
     }
 
-    public boolean checkEnded() 
-    {
-    	return ended;
-    }
 
 //    public void attackMade( KeyEvent k )
 //    {

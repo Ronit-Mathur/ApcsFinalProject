@@ -84,7 +84,9 @@ public class AdventureFrame extends JFrame
     private void checkMonster() {
         if(scene.checkMonster()) {
             System.out.println("monster");
-            BattleFrame battle = new BattleFrame();
+            Monster m = new Monster();
+            Battle b = new Battle(scene.getPlayer(), m);
+            BattleFrame battle = new BattleFrame(b);
             battle.setVisible( true );
         }
         else {

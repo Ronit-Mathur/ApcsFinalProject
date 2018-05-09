@@ -14,12 +14,13 @@ public class BattleFrame extends JFrame
     private BattleComponent scene;
     private JPanel panel;
     
-    public BattleFrame() {
+    public BattleFrame(Battle b) 
+    {
         this.setTitle( "Battle" );
         
 //        this.setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE );
 
-        controls = new BattleControls();
+        controls = new BattleControls( b );
         scene = new BattleComponent();
 //        panel.add(scene);
 //        add(controls);
