@@ -41,24 +41,27 @@ public class AdventureFrame extends JFrame
                 {
                     // A
                     scene.movePlayer( Move.LEFT );
+                    checkMonster();
                 }
                 else if ( keyCode == 119 )
                 {
                     // W
                     scene.movePlayer( Move.UP );
+                    checkMonster();
                 }
                 else if ( keyCode == 100 )
                 {
                     // D
                     scene.movePlayer( Move.RIGHT );
+                    checkMonster();
                 }
                 else if ( keyCode == 115 )
                 {
                     // S
                     scene.movePlayer( Move.DOWN );
+                    checkMonster();
                 }
                 
-                checkMonster();
                 pressed = true;
             }
 

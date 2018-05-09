@@ -56,8 +56,8 @@ public class WorldMapSquare
      * @return true if there is a monster, false if not
      */
     public boolean checkMonster() {
-        int d = (int) (Math.random() * 101);
-        return d < danger;
+        int dMonster = (int) (Math.random() * 101);
+        return dMonster < danger;
     }
     
     /**

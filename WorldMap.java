@@ -25,7 +25,7 @@ public class WorldMap
         map = new WorldMapSquare[rows][cols];
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                map[r][c] = new WorldMapSquare(Square.PERIOD, 50);
+                map[r][c] = new WorldMapSquare(Square.PERIOD, 15);
             }
         }
     }

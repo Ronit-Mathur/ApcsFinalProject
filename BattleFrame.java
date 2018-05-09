@@ -1,6 +1,8 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class BattleFrame extends JFrame
 {
@@ -8,14 +10,22 @@ public class BattleFrame extends JFrame
 
     private static final int FRAME_HEIGHT = 300;
     
+    private BattleControls controls;
     private BattleComponent scene;
+    private JPanel panel;
     
     public BattleFrame() {
         this.setTitle( "Battle" );
         
-        this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//        this.setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE );
+
+        controls = new BattleControls();
         scene = new BattleComponent();
+//        panel.add(scene);
+//        add(controls);
         add(scene);
+        this.add(controls, BorderLayout.SOUTH);
+//        this.add(scene, BorderLayout.EAST);
         setSize(FRAME_WIDTH, FRAME_HEIGHT);
         
     }
