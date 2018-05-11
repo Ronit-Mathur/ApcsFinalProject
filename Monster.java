@@ -6,7 +6,7 @@ public class Monster
     private int health;
 
     private int cooldown;
-
+    private int maxHealth;
 
     /**
      * @param d dmg
@@ -17,12 +17,14 @@ public class Monster
         dmg = d;
         health = h;
         cooldown = c;
+        maxHealth = health;
     }
     
     public Monster() {
         dmg = 5;
         health = 50;
         cooldown = 750;
+        maxHealth = health;
     }
     /**
      * @return damge
@@ -51,6 +53,11 @@ public class Monster
     public int lowerHealth(int d) {
         health -= d;
         return health;
+    }
+    
+    public int getMaxHealth()
+    {
+        return maxHealth;
     }
 
 }
