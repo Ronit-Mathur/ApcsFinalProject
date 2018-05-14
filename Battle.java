@@ -53,7 +53,7 @@ public class Battle implements ActionListener
     public void monsterAttack()
     {
         System.out.println( "monster attack" );
-        if ( player.getHealth() >= monster.getDamage() )
+        if ( player.getHealth() > monster.getDamage() )
         {
             // player gets attacked by monster
             player.lowerHealth(monster.getDamage());
@@ -70,7 +70,7 @@ public class Battle implements ActionListener
 
     public void playerAttack()
     {
-        if ( monster.getHealth() >= player.getDamage() )
+        if ( monster.getHealth() > player.getDamage() )
         {
             // player attacks monster
             monster.lowerHealth( player.getDamage() );
@@ -106,6 +106,16 @@ public class Battle implements ActionListener
         System.out.println( "Monster HP: " + monster.getHealth() );
     }
     
+    
+    public Player getPlayer() 
+    {
+        return player;
+    }
+    
+    public Monster getMonster()
+    {
+        return monster;
+    }
     // this is to test it
 //    public static void main(String[] args) throws InterruptedException {
 //        Player p = new Player(5,5,null);

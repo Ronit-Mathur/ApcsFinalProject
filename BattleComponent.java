@@ -13,11 +13,18 @@ import java.awt.Color;
 
 public class BattleComponent extends JComponent
 {
-	
+	private Battle battle;
+	private BattleControls battleControls;
+	private Player player;
+	private Monster monster;
 
-	public BattleComponent() 
+	public BattleComponent(BattleControls b) 
 	{
 		
+		battleControls = b;
+		battle = battleControls.getBattle();
+		player = battleControls.getPlayer();
+		monster = battleControls.getMonster();
 	}
 
 
@@ -25,10 +32,30 @@ public class BattleComponent extends JComponent
 	{
 		
 		Graphics2D g2 = (Graphics2D) g;
-		Rectangle r = new Rectangle(100, 50, 50, 50);
-		g2.setColor(Color.RED);
-		g2.fill(r);
-		g2.draw(r);
-
+		drawPlayerHealth(g2, 50, 50);
+		drawMonsterHealth(g2, 50, 100);
 	}
+	
+	public void drawPlayerHealth(Graphics2D g2, int x, int y) 
+	{
+	    g2.drawString( "PLAYER", x, y );
+	    Rectangle h = new Rectangle(x, y + 5, (int)(300 * (player.getHealth() * 1.0 / player.getMaxHealth() )), 25);
+	    g2.setColor( Color.GREEN );
+	    g2.fill( h );
+	    Rectangle border = new Rectangle(x, y + 5, 300, 25);
+	    g2.setColor( Color.BLACK );
+	    g2.draw( border );
+	    repaint();
+	}
+	public void drawMonsterHealth(Graphics2D g2, int x, int y) 
+    {
+	    g2.drawString( "MONSTER", x, y );
+	    Rectangle h = new Rectangle(x, y + 5, (int)(300 * (monster.getHealth() * 1.0 / monster.getMaxHealth())), 25);
+        g2.setColor( Color.RED );
+        g2.fill( h );
+        Rectangle border = new Rectangle(x, y + 5, 300, 25);
+        g2.setColor( Color.BLACK );
+        g2.draw( border );
+        repaint();
+    }
 }

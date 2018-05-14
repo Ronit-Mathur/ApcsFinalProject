@@ -16,10 +16,15 @@ public class BattleControls extends JPanel
     private ActionListener attack;
 
     private ActionListener block;
+    
+    private Battle battle;
 
+    private BattleFrame frame;
 
-    public BattleControls( final Battle battle )
+    public BattleControls( Battle b, BattleFrame f )
     {
+        battle = b;
+        frame = f;
         JButton aButton = new JButton( "Attack" );
         JButton bButton = new JButton( "Block" );
         attack = new ActionListener()
@@ -28,20 +33,28 @@ public class BattleControls extends JPanel
             {
                 if ( !battle.checkEnded() )
                 {
+                    
                     battle.playerAttack();
-                    System.out.println( "Attacked" );
                     if ( !battle.checkEnded() )
                     {
+                        // TODO: Add a delay for the monster attack
                         battle.monsterAttack();
+                    }
+                    else 
+                    {
+                        frame.dispose();
                     }
                 }
                 else
                 {
+<<<<<<< HEAD
                     System.out.println( "Not Attacked" );
                     
                     // TODO: close window
+=======
+                    frame.dispose();
+>>>>>>> b111fd139305efe8d5e0dc9df3ba620240612479
                 }
-                // TODO
             }
         };
         aButton.addActionListener( attack );
@@ -61,4 +74,18 @@ public class BattleControls extends JPanel
         this.add( label );
     }
 
+    public Battle getBattle() 
+    {
+        return battle;
+    }
+    
+    public Player getPlayer()
+    {
+        return battle.getPlayer();
+    }
+    
+    public Monster getMonster() 
+    {
+        return battle.getMonster();
+    }
 }
