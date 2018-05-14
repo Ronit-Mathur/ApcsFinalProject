@@ -38,6 +38,7 @@ public class BattleControls extends JPanel
                 else
                 {
                     System.out.println( "Not Attacked" );
+                    
                     // TODO: close window
                 }
                 // TODO
