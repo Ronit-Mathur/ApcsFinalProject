@@ -40,20 +40,11 @@ public class BattleControls extends JPanel
                         // TODO: Add a delay for the monster attack
                         battle.monsterAttack();
                     }
-                    else 
-                    {
-                        frame.dispose();
-                    }
                 }
                 else
                 {
-<<<<<<< HEAD
                     System.out.println( "Not Attacked" );
-                    
-                    // TODO: close window
-=======
                     frame.dispose();
->>>>>>> b111fd139305efe8d5e0dc9df3ba620240612479
                 }
             }
         };
