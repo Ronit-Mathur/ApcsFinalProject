@@ -53,10 +53,11 @@ public class Battle implements ActionListener
     public void monsterAttack()
     {
         System.out.println( "monster attack" );
-        if ( player.getHealth() > monster.getDamage() )
+        player.lowerHealth(monster.getDamage());
+        if ( player.getHealth() != 0 )
         {
             // player gets attacked by monster
-            player.lowerHealth(monster.getDamage());
+            
             System.out.println("Monster attacked with " + monster.getDamage() + " and the player's health is now " + player.getHealth());
             
         }
@@ -70,10 +71,11 @@ public class Battle implements ActionListener
 
     public void playerAttack()
     {
-        if ( monster.getHealth() > player.getDamage() )
+        monster.lowerHealth( player.getDamage() );
+        if ( monster.getHealth() != 0 )
         {
             // player attacks monster
-            monster.lowerHealth( player.getDamage() );
+            
             System.out.println("Player attacked with " + player.getDamage() + " and the monster's health is now " + monster.getHealth());
         }
         else

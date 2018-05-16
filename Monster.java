@@ -52,6 +52,10 @@ public class Monster
     
     public int lowerHealth(int d) {
         health -= d;
+        if (health < 0) {
+            health = 0;
+            return 0;
+        }
         return health;
     }
     

@@ -79,4 +79,18 @@ public class WorldMap
     private boolean checkValid(int r, int c) {
         return !(r < 0 || r > map.length || c < 0 || c > map[0].length);
     }
+    
+    public void setSquareToRoad(int r, int c) 
+    {
+        map[r][c] = new WorldMapSquare(Square.HASHTAG, 0);
+    }
+    
+    public void reset() {
+//        map = new WorldMapSquare[getMapRows()][getMapCols()];
+//        for (int r = 0; r < getMapRows(); r++) {
+//            for (int c = 0; c < getMapCols(); c++) {
+//                map[r][c] = new WorldMapSquare(Square.PERIOD, 15);
+//            }
+//        }
+    }
 }

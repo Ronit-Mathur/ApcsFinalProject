@@ -191,6 +191,15 @@ public class Player
     
     public int lowerHealth(int d) {
         health -= d;
+        if (health < 0) {
+            health = 0;
+            return 0;
+        }
         return health;
+    }
+    
+    public boolean checkDeath() 
+    {
+        return health == 0;
     }
 }

@@ -22,6 +22,7 @@ public class AdventureComponent extends JComponent {
 	private WorldMapSquare[][] map;
 	private WorldMap world;
 	private Player player;
+	private boolean endScreen;
 
 	/**
 	 * Creates the aspects of the game
@@ -32,6 +33,7 @@ public class AdventureComponent extends JComponent {
 		player = new Player(world.getMapRows() / 2 + 1, world.getMapCols() / 2 + 1, world);
 		Monster monster = new gPeck();
 		// Monster monster2 = new Monster( 10, 100, 10, 10, 10, wm );
+		endScreen = false;
 	}
 
 	/**
@@ -44,11 +46,21 @@ public class AdventureComponent extends JComponent {
 	{
 		Graphics2D g2 = (Graphics2D) g;
 		drawSidebar(g2);
-		drawWorld(g2);
+		if (checkPlayerDeath())
+		{
+		    drawGameOver(g2);
+		    endScreen = true;
+		}
+		else 
+		{
+		    drawWorld(g2);
+		}
+		
 	}
 
 	private void drawWorld(Graphics2D g2) 
 	{
+	    map = world.getMap();
 		Font mapFont = new Font("Courier", Font.BOLD, 12);
 		g2.setFont(mapFont);
 		int x = 50;
@@ -82,8 +94,24 @@ public class AdventureComponent extends JComponent {
 		g2.drawString("Row: " + player.getPlayerRow(), 475, 100);
 		g2.drawString("Col: " + player.getPlayerCol(), 475, 115);
 	}
+	
+	private void drawGameOver(Graphics2D g2) 
+	{
+	    Font f = new Font("Courier", Font.BOLD, 18);
+	    g2.setFont( f );
+	    Rectangle r = new Rectangle(50, 50, 340, 350);
+	    g2.setColor( Color.RED);
+	    g2.fill(r);
+	    g2.setColor( Color.WHITE );
+	    
+	    g2.drawString( "GAME OVER", 170, 200 );
+//	    Font f1 = new Font("Courier", Font.PLAIN, 12);
+//        g2.setFont( f1 );
+//	    g2.drawString( "Press 'w' to restart.", 180, 210 );
+	}
 
 	public void movePlayer(Move m) {
+	    world.setSquareToRoad( player.getPlayerRow(), player.getPlayerCol() );
 		if (m == Move.UP) {
 			player.moveUp();
 		} else if (m == Move.DOWN) {
@@ -100,6 +128,14 @@ public class AdventureComponent extends JComponent {
 		return world.checkMonster(player.getPlayerRow(), player.getPlayerCol());
 	}
 
+	public boolean checkPlayerDeath() 
+	{
+	    System.out.println( "CHECK DEATH IS " + player.checkDeath() );
+	    if (!endScreen && player.checkDeath() == true ) {
+	        repaint();
+	    }
+	    return player.checkDeath();
+	}
 	public Player getPlayer() {
 		return player;
 	}

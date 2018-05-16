@@ -86,7 +86,7 @@ public class AdventureFrame extends JFrame
     private void checkMonster() {
         if(scene.checkMonster()) {
             System.out.println("monster");
-            Monster m = new Monster();
+            Monster m = new Monster(20, 20, 750);
             Battle b = new Battle(scene.getPlayer(), m);
             BattleFrame battle = new BattleFrame(b);
             battle.addWindowListener( new WindowListener() 
@@ -99,6 +99,11 @@ public class AdventureFrame extends JFrame
                 public void windowClosed( WindowEvent arg0 )
                 {
                     canMove = true;
+                    if (scene.checkPlayerDeath()) 
+                    {
+                        System.out.println("RESET");
+                        resetScene();
+                    }
                     
                 }
 
@@ -124,6 +129,24 @@ public class AdventureFrame extends JFrame
         else {
             System.out.println( "no monster" );
         }
+    }
+    
+    private void resetScene() 
+    {
+//        getContentPane().remove( scene );
+//        getContentPane().repaint();
+        scene.removeKeyListener( keyListener );
+//        scene = new AdventureComponent();
+//        add( scene );
+//        setSize( FRAME_WIDTH, FRAME_HEIGHT );
+//        setBackground(Color.WHITE);
+//        
+//        canMove = true;
+//        
+//        keyListener = new PlayerMovementKeyListener();
+//        scene.addKeyListener( keyListener );
+//        getContentPane().repaint();
+//        scene.setFocusable( true );
     }
 
     /**
