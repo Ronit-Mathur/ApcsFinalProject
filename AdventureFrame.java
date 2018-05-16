@@ -2,6 +2,8 @@ import javax.swing.JFrame;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 
 /**
@@ -25,7 +27,7 @@ public class AdventureFrame extends JFrame
     private static final int FRAME_HEIGHT = 500;
 
     private PlayerMovementKeyListener keyListener;
-
+    private boolean canMove;
 
     class PlayerMovementKeyListener implements KeyListener
     {
@@ -34,7 +36,7 @@ public class AdventureFrame extends JFrame
 
         public void keyPressed( KeyEvent k )
         {
-            if ( !pressed )
+            if ( !pressed && canMove )
             {
                 int keyCode = k.getKeyChar();
                 if ( keyCode == 97 )
@@ -87,7 +89,37 @@ public class AdventureFrame extends JFrame
             Monster m = new Monster();
             Battle b = new Battle(scene.getPlayer(), m);
             BattleFrame battle = new BattleFrame(b);
+            battle.addWindowListener( new WindowListener() 
+            {
+
+                @Override
+                public void windowActivated( WindowEvent arg0 ) {}
+
+                @Override
+                public void windowClosed( WindowEvent arg0 )
+                {
+                    canMove = true;
+                    
+                }
+
+                @Override
+                public void windowClosing( WindowEvent arg0 ) {}
+
+                @Override
+                public void windowDeactivated( WindowEvent arg0 ){}
+
+                @Override
+                public void windowDeiconified( WindowEvent arg0 ){}
+
+                @Override
+                public void windowIconified( WindowEvent arg0 ){}
+
+                @Override
+                public void windowOpened( WindowEvent arg0 ){}
+
+            } );
             battle.setVisible( true );
+            canMove = false;
         }
         else {
             System.out.println( "no monster" );
@@ -103,6 +135,8 @@ public class AdventureFrame extends JFrame
         add( scene );
         setSize( FRAME_WIDTH, FRAME_HEIGHT );
         setBackground(Color.WHITE);
+        
+        canMove = true;
         
         keyListener = new PlayerMovementKeyListener();
         scene.addKeyListener( keyListener );

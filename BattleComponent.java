@@ -39,6 +39,7 @@ public class BattleComponent extends JComponent
 	public void drawPlayerHealth(Graphics2D g2, int x, int y) 
 	{
 	    g2.drawString( "PLAYER", x, y );
+	    g2.drawString( player.getHealth() + "/" + player.getMaxHealth(), x + 250, y );
 	    Rectangle h = new Rectangle(x, y + 5, (int)(300 * (player.getHealth() * 1.0 / player.getMaxHealth() )), 25);
 	    g2.setColor( Color.GREEN );
 	    g2.fill( h );
@@ -50,6 +51,7 @@ public class BattleComponent extends JComponent
 	public void drawMonsterHealth(Graphics2D g2, int x, int y) 
     {
 	    g2.drawString( "MONSTER", x, y );
+	    g2.drawString( monster.getHealth() + "/" + monster.getMaxHealth(), x + 250, y );
 	    Rectangle h = new Rectangle(x, y + 5, (int)(300 * (monster.getHealth() * 1.0 / monster.getMaxHealth())), 25);
         g2.setColor( Color.RED );
         g2.fill( h );

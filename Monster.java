@@ -31,7 +31,7 @@ public class Monster
      */
     public int getDamage()
     {
-        return dmg;
+        return (int)(dmg / 2.0 + (dmg * Math.random()));
     }
     
     /**

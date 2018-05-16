@@ -19,7 +19,7 @@ public class BattleFrame extends JFrame
         this.setTitle( "Battle" );
         
 //        this.setDefaultCloseOperation( JFrame.HIDE_ON_CLOSE );
-
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         controls = new BattleControls( b, this );
         scene = new BattleComponent( controls );
 //        panel.add(scene);

@@ -37,15 +37,18 @@ public class Player
      */
     public Player( int r, int c, WorldMap w )
     {
+        this(r, c, w, 10, 100, 10);
+    }
+    
+    public Player(int r, int c, WorldMap w, int damage, int h, int cool) {
         playerRow = r;
         playerCol = c;
         world = w;
         
-        // TODO: Make a constructor where you can set this stuff
-        dmg = 10;
-        health = 100;
-        cooldown = 10;
-        maxHealth = 100;
+        dmg = damage;
+        health = h;
+        cooldown = cool;
+        maxHealth = h;
     }
 
 
@@ -183,7 +186,7 @@ public class Player
 
     public int getDamage()
     {
-        return dmg;
+        return (int)(dmg / 2.0 + (dmg * Math.random()));
     }
     
     public int lowerHealth(int d) {

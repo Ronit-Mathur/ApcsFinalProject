@@ -46,6 +46,10 @@ public class BattleControls extends JPanel
                     System.out.println( "Not Attacked" );
                     frame.dispose();
                 }
+                
+                if (battle.checkEnded()) {
+                    frame.dispose();
+                }
             }
         };
         aButton.addActionListener( attack );
