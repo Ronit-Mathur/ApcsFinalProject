@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,7 +8,7 @@ import java.util.Queue;
 public class Battle implements ActionListener
 {
     private Player player;
-    private Queue<Monster> q;
+    private static Queue<Monster> q = new LinkedList<Monster>(Arrays.asList(new Monster(), new gPeck(), new lilPeck(), new papaPeck()));
     private Monster monster;
     private boolean ended;
   
@@ -17,7 +18,6 @@ public class Battle implements ActionListener
         monster = m;
         ended = false;
         q = new LinkedList<Monster>();
-        fillMonsterQueue();
     }
 
     public Battle(Player p) 
@@ -25,8 +25,14 @@ public class Battle implements ActionListener
         player = p;
         ended = false;
         q = new LinkedList<Monster>();
-        fillMonsterQueue();
         monster = getNextMonster();
+    }
+    
+    private static void fillMonsterList() 
+    {
+        q.add( new Monster() );
+        q.add( new gPeck() );
+        q.add( new lilPeck() );
     }
     public void startBattle()
     {
@@ -36,16 +42,12 @@ public class Battle implements ActionListener
 
     private Monster getNextMonster() 
     {
+        for (Monster m: q) {
+            System.out.println( m.getName() );
+        }
         return q.peek();
     }
     
-    private void fillMonsterQueue() 
-    {
-        q.add( new gPeck() );
-        q.add( new lilPeck() );
-        q.add( new papaPeck() );
-    }
-
     /**
      * Ending battle Close battle window? or user closes it themselves? >>
      * possibly move to different class
@@ -58,6 +60,9 @@ public class Battle implements ActionListener
         if ( win )
         {
             q.remove();
+            for (Monster m: q) {
+                System.out.println( m.getName() );
+            }
             // player win
             System.out.println( "Player won" );
         }
