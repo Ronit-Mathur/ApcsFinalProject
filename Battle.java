@@ -1,11 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedList;
+import java.util.Queue;
 
 
 public class Battle implements ActionListener
 {
     private Player player;
-
+    private Queue<Monster> q;
     private Monster monster;
     private boolean ended;
   
@@ -15,14 +17,35 @@ public class Battle implements ActionListener
         player = p;
         monster = m;
         ended = false;
+        q = new LinkedList<Monster>();
+        fillMonsterQueue();
     }
 
-
+    public Battle(Player p) 
+    {
+        player = p;
+        ended = false;
+        q = new LinkedList<Monster>();
+        fillMonsterQueue();
+        monster = getNextMonster();
+    }
     public void startBattle()
     {
+        
     	ended = false;
     }
 
+    private Monster getNextMonster() 
+    {
+        return q.peek();
+    }
+    
+    private void fillMonsterQueue() 
+    {
+        q.add( new gPeck() );
+        q.add( new lilPeck() );
+        q.add( new papaPeck() );
+    }
 
     /**
      * Ending battle Close battle window? or user closes it themselves? >>
@@ -35,6 +58,7 @@ public class Battle implements ActionListener
     {
         if ( win )
         {
+            q.remove();
             // player win
             System.out.println( "Player won" );
         }

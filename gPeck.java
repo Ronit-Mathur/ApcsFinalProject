@@ -8,4 +8,8 @@ public class gPeck extends Monster
         super( 10, 300, 1000 );
     }
 
+    public String getName() 
+    {
+        return "G Peck";
+    }
 }

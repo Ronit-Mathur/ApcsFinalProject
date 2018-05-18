@@ -6,4 +6,9 @@ public class lilPeck extends papaPeck
         super();
     }
     // double attack?
+    
+    public String getName() 
+    {
+        return "lil' Peck";
+    }
 }

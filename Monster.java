@@ -63,5 +63,10 @@ public class Monster
     {
         return maxHealth;
     }
+    
+    public String getName() 
+    {
+        return "Monster";
+    }
 
 }

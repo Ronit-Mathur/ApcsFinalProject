@@ -86,8 +86,7 @@ public class AdventureFrame extends JFrame
     private void checkMonster() {
         if(scene.checkMonster()) {
             System.out.println("monster");
-            Monster m = new Monster(20, 20, 750);
-            Battle b = new Battle(scene.getPlayer(), m);
+            Battle b = new Battle(scene.getPlayer());
             BattleFrame battle = new BattleFrame(b);
             battle.addWindowListener( new WindowListener() 
             {
@@ -102,7 +101,7 @@ public class AdventureFrame extends JFrame
                     if (scene.checkPlayerDeath()) 
                     {
                         System.out.println("RESET");
-                        resetScene();
+//                        resetScene();
                     }
                     
                 }
