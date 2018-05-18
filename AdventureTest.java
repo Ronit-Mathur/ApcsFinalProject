@@ -87,10 +87,9 @@ public class AdventureTest
     {
         Player player = new Player( 10, 10, w, 10, 100, 10 );
         int d = player.getDamage();
-        assertNotNull( d );
+        assertTrue( d >= 5 && d <= 15 );
 
     }
-    // how do we test this if it used Math.random ???
 
 
     @Test
@@ -113,4 +112,12 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
+    //Battle tests
+    
+    public void createBattle()
+    {
+    	Player player = new Player( 10, 10, w, 10, 100, 10 );
+    	Monster monster = new Monster( )
+    	Battle battle = new Battle( player, m)
+    }
 }

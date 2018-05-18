@@ -12,7 +12,6 @@ public class Battle implements ActionListener
     private boolean ended;
   
     public Battle( Player p, Monster m )
-
     {
         player = p;
         monster = m;
