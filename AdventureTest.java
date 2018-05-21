@@ -114,7 +114,6 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
-<<<<<<< HEAD
     // //Battle tests TODO Battle Tests
     //
     // public void createBattle()
@@ -167,24 +166,23 @@ public class AdventureTest
     {
         AdventureComponent scene = new AdventureComponent();
         int row = scene.getPlayer().getPlayerRow();
-        scene.movePlayer(Move.UP);
-        assertEquals(scene.getPlayer().getPlayerRow(), row - 1 );
+        scene.movePlayer( Move.UP );
+        assertEquals( scene.getPlayer().getPlayerRow(), row - 1 );
     }
 
-=======
-//    //Battle tests TODO Battle Tests
-//    
-//    public void createBattle()
-//    {
-//    	Player player = new Player( 10, 10, w, 10, 100, 10 );
-//    	Monster monster = new Monster( )
-//    	Battle battle = new Battle( player, m)
-//    }
-    
+
+    // //Battle tests TODO Battle Tests
+    //
+    // public void createBattle()
+    // {
+    // Player player = new Player( 10, 10, w, 10, 100, 10 );
+    // Monster monster = new Monster( )
+    // Battle battle = new Battle( player, m)
+    // }
+@Test    
     public void testPaintComponent()
     {
     	Graphics2D g;
     	AdventureComponent.paintComponent( g );
     }
->>>>>>> 6584ff758f91f8a0ade4cafe61d028e8c5a0af3f
 }
