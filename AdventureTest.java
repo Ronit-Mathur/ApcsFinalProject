@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.awt.Graphics2D;
+
 import org.junit.Test;
 
 
@@ -120,4 +122,10 @@ public class AdventureTest
 //    	Monster monster = new Monster( )
 //    	Battle battle = new Battle( player, m)
 //    }
+    
+    public void testPaintComponent()
+    {
+    	Graphics2D g;
+    	AdventureComponent.paintComponent( g );
+    }
 }
