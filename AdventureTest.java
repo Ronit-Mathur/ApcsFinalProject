@@ -125,4 +125,14 @@ public class AdventureTest
     {
     	
     }
+    
+    
+    
+    // AdventureComponent 
+    
+    @Test
+    public void createButts()
+    {
+        
+    }
 }
