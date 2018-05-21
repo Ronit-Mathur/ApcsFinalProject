@@ -14,7 +14,7 @@ import java.util.*;
 public class WorldMap
 {
     private WorldMapSquare[][] map;
-    private Player player;
+    private WorldMapSquare[][] hiddenMap;
     
     /**
      * Creates a grid with a width and height
@@ -23,9 +23,35 @@ public class WorldMap
      */
     public WorldMap(int rows, int cols) {
         map = new WorldMapSquare[rows][cols];
+        hiddenMap = new WorldMapSquare[rows][cols];
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
-                map[r][c] = new WorldMapSquare(Square.PERIOD, 15);
+                map[r][c] = new WorldMapSquare(Square.SPACE, 15);
+            }
+        }
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                hiddenMap[r][c] = new WorldMapSquare(Square.PERIOD, 15);
+            }
+        }
+    }
+    
+    public void showAround(Player p) 
+    {
+        int pRow = p.getPlayerRow();
+        int pCol = p.getPlayerCol();
+        for (int i = -2; i <= 2; i++) 
+        {
+            for (int j = -2; j <= 2; j++) 
+            {
+                if (!(Math.abs( j ) == 2 && Math.abs( i ) == 2))
+                {
+                    if (checkValid(pRow + i, pCol + j)) 
+                    {
+                        map[pRow + i][pCol + j] = hiddenMap[pRow + i][pCol+j];
+                    }
+                }
+                
             }
         }
     }

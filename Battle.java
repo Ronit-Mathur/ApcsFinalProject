@@ -8,7 +8,10 @@ import java.util.Queue;
 public class Battle implements ActionListener
 {
     private Player player;
-    private static Queue<Monster> q = new LinkedList<Monster>(Arrays.asList(new Monster(), new gPeck(), new lilPeck(), new papaPeck()));
+    private static Queue<Monster> q = new LinkedList<Monster>() {{
+            add(new Monster());
+            
+        }};
     private Monster monster;
     private boolean ended;
   
@@ -17,22 +20,34 @@ public class Battle implements ActionListener
         player = p;
         monster = m;
         ended = false;
-        q = new LinkedList<Monster>();
     }
 
     public Battle(Player p) 
     {
         player = p;
         ended = false;
-        q = new LinkedList<Monster>();
         monster = getNextMonster();
     }
     
     private static void fillMonsterList() 
     {
-        q.add( new Monster() );
-        q.add( new gPeck() );
-        q.add( new lilPeck() );
+        int r = (int)(Math.random() * 100);
+        if (r < 80) 
+        {
+            q.add( new Monster() );
+        }
+        else if (r < 87)
+        {
+            q.add( new lilPeck() );
+        }
+        else if (r < 95)
+        {
+            q.add( new gPeck() );
+        }
+        else
+        {
+            q.add( new papaPeck() );
+        }
     }
     public void startBattle()
     {
@@ -60,9 +75,7 @@ public class Battle implements ActionListener
         if ( win )
         {
             q.remove();
-            for (Monster m: q) {
-                System.out.println( m.getName() );
-            }
+            fillMonsterList();
             // player win
             System.out.println( "Player won" );
         }
@@ -118,15 +131,6 @@ public class Battle implements ActionListener
     	return ended;
     }
 
-//    public void attackMade( KeyEvent k )
-//    {
-//        int keyCode = k.getKeyChar();
-//        if ( keyCode == 32 )
-//        {
-//            // spacebar to attack
-//            playerAttack();
-//        }
-//    }
     
     @Override
     public void actionPerformed( ActionEvent e )
@@ -146,12 +150,4 @@ public class Battle implements ActionListener
     {
         return monster;
     }
-    // this is to test it
-//    public static void main(String[] args) throws InterruptedException {
-//        Player p = new Player(5,5,null);
-//        Monster m = new Monster();
-//        Battle battle = new Battle(p, m);
-//        battle.startBattle();
-//        Thread.sleep( 5000 );
-//    }
 }

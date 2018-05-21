@@ -1,5 +1,6 @@
 
 public enum Square {
+    SPACE(' '),
     PERIOD('.'), 
     COMMA(','),
     SEMICOLON(';'), 

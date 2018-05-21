@@ -101,7 +101,7 @@ public class AdventureFrame extends JFrame
                     if (scene.checkPlayerDeath()) 
                     {
                         System.out.println("RESET");
-//                        resetScene();
+                        resetScene();
                     }
                     
                 }
