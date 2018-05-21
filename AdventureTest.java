@@ -120,4 +120,14 @@ public class AdventureTest
     	Monster monster = new Monster( )
     	Battle battle = new Battle( player, m)
     }
+    
+    
+    
+    // AdventureComponent 
+    
+    @Test
+    public void createButts()
+    {
+        
+    }
 }
