@@ -112,12 +112,12 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
-    //Battle tests
-    
-    public void createBattle()
-    {
-    	Player player = new Player( 10, 10, w, 10, 100, 10 );
-    	Monster monster = new Monster( )
-    	Battle battle = new Battle( player, m)
-    }
+//    //Battle tests TODO Battle Tests
+//    
+//    public void createBattle()
+//    {
+//    	Player player = new Player( 10, 10, w, 10, 100, 10 );
+//    	Monster monster = new Monster( )
+//    	Battle battle = new Battle( player, m)
+//    }
 }
