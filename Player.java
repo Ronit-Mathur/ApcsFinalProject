@@ -62,12 +62,14 @@ public class Player
         if ( checkMove( playerRow - 1, playerCol ) )
         {
             playerRow--;
+            world.showAround(this);
             return true;
         }
         else
         {
             return false;
         }
+        
     }
 
 
@@ -81,6 +83,7 @@ public class Player
         if ( checkMove( playerRow + 1, playerCol ) )
         {
             playerRow++;
+            world.showAround(this);
             return true;
         }
         else
@@ -100,6 +103,7 @@ public class Player
         if ( checkMove( playerRow, playerCol - 1 ) )
         {
             playerCol--;
+            world.showAround(this);
             return true;
         }
         else
@@ -119,6 +123,7 @@ public class Player
         if ( checkMove( playerRow, playerCol + 1 ) )
         {
             playerCol++;
+            world.showAround(this);
             return true;
         }
         else
