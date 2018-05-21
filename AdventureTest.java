@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.awt.Graphics2D;
+
 import org.junit.Test;
 
 
@@ -112,6 +114,64 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
+<<<<<<< HEAD
+    // //Battle tests TODO Battle Tests
+    //
+    // public void createBattle()
+    // {
+    // Player player = new Player( 10, 10, w, 10, 100, 10 );
+    // Monster monster = new Monster( )
+    // Battle battle = new Battle( player, m)
+    // }
+
+
+    // AdventureComponent Tests
+
+    @Test
+    public void getPlayerTest()
+    {
+        // Player player = new Player( 10, 10, w, 10, 100, 10 );
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene.getPlayer() );
+    }
+
+
+    @Test
+    public void checkPlayerDeathTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        // Player player = new Player( 10, 10, w, 10, 100, 10 );
+        scene.getPlayer().lowerHealth( 100 );
+        assertTrue( scene.checkPlayerDeath() );
+    }
+
+
+    @Test
+    public void checkMonsterTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene.checkMonster() );
+    }
+
+
+    @Test
+    public void adventureComponentConstructor()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene );
+    }
+
+
+    @Test
+    public void movePlayerTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        int row = scene.getPlayer().getPlayerRow();
+        scene.movePlayer(Move.UP);
+        assertEquals(scene.getPlayer().getPlayerRow(), row - 1 );
+    }
+
+=======
 //    //Battle tests TODO Battle Tests
 //    
 //    public void createBattle()
@@ -120,4 +180,11 @@ public class AdventureTest
 //    	Monster monster = new Monster( )
 //    	Battle battle = new Battle( player, m)
 //    }
+    
+    public void testPaintComponent()
+    {
+    	Graphics2D g;
+    	AdventureComponent.paintComponent( g );
+    }
+>>>>>>> 6584ff758f91f8a0ade4cafe61d028e8c5a0af3f
 }

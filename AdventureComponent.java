@@ -18,7 +18,8 @@ import java.awt.Label;
  *
  * @author Sources: TODO
  */
-public class AdventureComponent extends JComponent {
+public class AdventureComponent extends JComponent 
+{
 	private WorldMapSquare[][] map;
 	private WorldMap world;
 	private Player player;
@@ -27,12 +28,11 @@ public class AdventureComponent extends JComponent {
 	/**
 	 * Creates the aspects of the game
 	 */
-	public AdventureComponent() {
+	public AdventureComponent() 
+	{
 		world = new WorldMap(31, 31);
 		map = world.getMap();
 		player = new Player(world.getMapRows() / 2 + 1, world.getMapCols() / 2 + 1, world);
-		Monster monster = new gPeck();
-		// Monster monster2 = new Monster( 10, 100, 10, 10, 10, wm );
 		endScreen = false;
 	}
 
@@ -130,7 +130,7 @@ public class AdventureComponent extends JComponent {
 
 	public boolean checkPlayerDeath() 
 	{
-	    System.out.println( "CHECK DEATH IS " + player.checkDeath() );
+	    //System.out.println( "CHECK DEATH IS " + player.checkDeath() );
 	    if (!endScreen && player.checkDeath() == true ) {
 	        repaint();
 	    }
