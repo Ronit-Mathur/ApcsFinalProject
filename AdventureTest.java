@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.awt.Graphics2D;
+
 import org.junit.Test;
 
 
@@ -112,6 +114,7 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
+<<<<<<< HEAD
     // //Battle tests TODO Battle Tests
     //
     // public void createBattle()
@@ -168,4 +171,20 @@ public class AdventureTest
         assertEquals(scene.getPlayer().getPlayerRow(), row - 1 );
     }
 
+=======
+//    //Battle tests TODO Battle Tests
+//    
+//    public void createBattle()
+//    {
+//    	Player player = new Player( 10, 10, w, 10, 100, 10 );
+//    	Monster monster = new Monster( )
+//    	Battle battle = new Battle( player, m)
+//    }
+    
+    public void testPaintComponent()
+    {
+    	Graphics2D g;
+    	AdventureComponent.paintComponent( g );
+    }
+>>>>>>> 6584ff758f91f8a0ade4cafe61d028e8c5a0af3f
 }
