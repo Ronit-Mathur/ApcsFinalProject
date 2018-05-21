@@ -5,7 +5,7 @@ public class gPeck extends Monster
 
     public gPeck()
     {
-        super( 10, 300, 1000 );
+        super( 10, 300);
     }
 
     public String getName() 

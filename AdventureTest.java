@@ -112,12 +112,60 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
-//    //Battle tests TODO Battle Tests
-//    
-//    public void createBattle()
-//    {
-//    	Player player = new Player( 10, 10, w, 10, 100, 10 );
-//    	Monster monster = new Monster( )
-//    	Battle battle = new Battle( player, m)
-//    }
+    // //Battle tests TODO Battle Tests
+    //
+    // public void createBattle()
+    // {
+    // Player player = new Player( 10, 10, w, 10, 100, 10 );
+    // Monster monster = new Monster( )
+    // Battle battle = new Battle( player, m)
+    // }
+
+
+    // AdventureComponent Tests
+
+    @Test
+    public void getPlayerTest()
+    {
+        // Player player = new Player( 10, 10, w, 10, 100, 10 );
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene.getPlayer() );
+    }
+
+
+    @Test
+    public void checkPlayerDeathTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        // Player player = new Player( 10, 10, w, 10, 100, 10 );
+        scene.getPlayer().lowerHealth( 100 );
+        assertTrue( scene.checkPlayerDeath() );
+    }
+
+
+    @Test
+    public void checkMonsterTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene.checkMonster() );
+    }
+
+
+    @Test
+    public void adventureComponentConstructor()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        assertNotNull( scene );
+    }
+
+
+    @Test
+    public void movePlayerTest()
+    {
+        AdventureComponent scene = new AdventureComponent();
+        int row = scene.getPlayer().getPlayerRow();
+        scene.movePlayer(Move.UP);
+        assertEquals(scene.getPlayer().getPlayerRow(), row - 1 );
+    }
+
 }

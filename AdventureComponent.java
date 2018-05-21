@@ -130,7 +130,7 @@ public class AdventureComponent extends JComponent {
 
 	public boolean checkPlayerDeath() 
 	{
-	    System.out.println( "CHECK DEATH IS " + player.checkDeath() );
+	    //System.out.println( "CHECK DEATH IS " + player.checkDeath() );
 	    if (!endScreen && player.checkDeath() == true ) {
 	        repaint();
 	    }
