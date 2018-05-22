@@ -170,7 +170,6 @@ public class AdventureTest
         assertEquals( scene.getPlayer().getPlayerRow(), row - 1 );
     }
 
-
     // //Battle tests TODO Battle Tests
     //
     // public void createBattle()
@@ -179,10 +178,188 @@ public class AdventureTest
     // Monster monster = new Monster( )
     // Battle battle = new Battle( player, m)
     // }
-@Test    
-    public void testPaintComponent()
+
+    // IDK HOW TO DO THIS ONE
+    //
+    // TODO
+    //
+    //
+    // @Test
+    // public void testPaintComponent()
+    // {
+    // Graphics2D g;
+    // AdventureComponent.paintComponent( g );
+    // }
+
+
+    // Battle Tests
+    @Test
+    public void battleConstructor()
     {
-    	Graphics2D g;
-    	AdventureComponent.paintComponent( g );
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        Battle b2 = new Battle( player );
+        assertNotNull( b );
+        assertNotNull( b2 );
+    }
+
+
+    @Test
+    public void startBattleTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        b.startBattle();
+        assertFalse( b.checkEnded() );
+    }
+
+
+    @Test
+    public void checkEndedTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 1, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        b.startBattle();
+        b.monsterAttack();
+        assertTrue( b.checkEnded() );
+    }
+
+
+    /**
+     * NEED TO FINISH TODO
+     * 
+     * 
+     */
+    @Test
+    public void endBattleTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 10, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        b.startBattle();
+        b.monsterAttack();
+        b.endBattle( false );
+
+    }
+
+
+    @Test
+    public void monsterAttackTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        b.monsterAttack();
+        assertTrue( ( player.getHealth() > ( 100 - 15 ) ) || ( player.getHealth() < ( 100 - 5 ) ) );
+    }
+
+
+    @Test
+    public void playerAttackTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        b.playerAttack();
+        assertTrue(
+            ( monster.getHealth() > ( 300 - 15 ) ) || ( monster.getHealth() < ( 300 - 5 ) ) );
+    }
+
+    // actionperformed test ????
+    // TODO
+
+
+    @Test
+    public void getBattlesPlayerTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        assertNotNull( b.getPlayer() );
+    }
+
+
+    @Test
+    public void getBattlesMonsterTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        Monster monster = new gPeck();
+        Battle b = new Battle( player, monster );
+        assertNotNull( b.getMonster() );
+    }
+
+
+    // Monster and Monster subclasses Tests
+
+    @Test
+    public void monsterConstructor()
+    {
+        Monster mon = new Monster( 10, 100 );
+        Monster mon2 = new Monster();
+        assertNotNull( mon );
+        assertNotNull( mon2 );
+    }
+
+
+    @Test
+    public void getMonsterDamage()
+    {
+        Monster mon = new Monster( 10, 100 );
+        int d = mon.getDamage();
+        assertTrue( ( d > ( 100 - 15 ) ) || ( d < ( 100 - 5 ) ) );
+    }
+
+
+    @Test
+    public void getMonsterHealth()
+    {
+        Monster mon = new Monster( 10, 100 );
+        assertEquals( 100, mon.getHealth() );
+    }
+
+
+    @Test
+    public void monsterLowerHealth()
+    {
+        Monster mon = new Monster();
+        mon.lowerHealth( 10 );
+        assertEquals( mon.getHealth(), 40 );
+    }
+
+
+    @Test
+    public void getMonsMaxHealth()
+    {
+        Monster mon = new Monster();
+        mon.lowerHealth( 10 );
+        assertEquals( mon.getMaxHealth(), mon.getHealth() + 10 );
+    }
+
+
+    @Test
+    public void getMonsName()
+    {
+        Monster mon = new Monster();
+        assertEquals( "Monster", mon.getName() );
+    }
+
+
+    // gPeck
+    @Test
+    public void gPeckConstructor()
+    {
+        Monster g = new gPeck();
+        assertNotNull( g );
+    }
+
+
+    @Test
+    public void gPeckName()
+    {
+        Monster g = new gPeck();
+        assertEquals( "G Peck", g.getName() );
     }
 }
