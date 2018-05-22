@@ -20,6 +20,8 @@ public class BattleControls extends JPanel
     private Battle battle;
 
     private BattleFrame frame;
+    
+    private boolean skip = false;
 
     public BattleControls( Battle b, BattleFrame f )
     {
@@ -38,7 +40,16 @@ public class BattleControls extends JPanel
                     if ( !battle.checkEnded() )
                     {
                         // TODO: Add a delay for the monster attack
-                        battle.monsterAttack();
+                        System.out.println(skip);
+                    	if (skip = false) 
+                        {
+                        	battle.monsterAttack();
+                        }
+                        else
+                        {
+                        	skip = false;
+                        }
+                    	
                     }
                 }
                 else
@@ -57,7 +68,24 @@ public class BattleControls extends JPanel
         {
             public void actionPerformed( ActionEvent e )
             {
-                System.out.println( "Blocked" ); // TODO
+                double chanceOfBlock = .35;
+                if ( Math.random() <= chanceOfBlock )
+                {
+                	if ( battle.getPlayer().getHealth() <= (battle.getPlayer().getMaxHealth() - 10) )
+                	{
+                		battle.getPlayer().increaseHealth(10);
+                		skip = true;
+                		System.out.println( "Blocked" );
+                	}
+                }
+                else
+                {
+                	skip = false;
+                	battle.monsterAttack();
+                	System.out.println( "Not Blocked" );
+                }
+                // TODO
+                
             }
         };
         bButton.addActionListener( block );

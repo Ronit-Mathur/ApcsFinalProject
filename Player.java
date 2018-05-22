@@ -194,13 +194,28 @@ public class Player
         return (int)(dmg / 2.0 + (dmg * Math.random()));
     }
     
-    public int lowerHealth(int d) {
+    public int lowerHealth(int d) 
+    {
         health -= d;
         if (health < 0) {
             health = 0;
             return 0;
         }
         return health;
+    }
+    
+    public int increaseHealth(int d)
+    {
+    	if ((health +d ) != maxHealth )
+    	{
+    		health += d;
+    		return health;
+    	}
+    	else
+    	{
+    		health = maxHealth;
+    		return health;
+    	}
     }
     
     public boolean checkDeath() 

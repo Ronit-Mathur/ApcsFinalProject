@@ -8,10 +8,10 @@ import java.util.Queue;
 public class Battle implements ActionListener
 {
     private Player player;
-    private static Queue<Monster> q = new LinkedList<Monster>() {{
+    private static Queue<Monster> q = new LinkedList<Monster>() 
+    {{
             add(new Monster());
-            
-        }};
+    }};
     private Monster monster;
     private boolean ended;
   
