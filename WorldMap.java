@@ -34,6 +34,51 @@ public class WorldMap
                 hiddenMap[r][c] = new WorldMapSquare(Square.PERIOD, 15);
             }
         }
+        fillHiddenMap();
+    }
+    
+    private void fillHiddenMap()
+    {
+        int row = (int)(Math.random() * map.length);
+        int col = (int)(Math.random() * map.length);
+        int i = 0;
+        while (i < 10)
+        {
+            if (!isLocation(row, col))
+            {
+                hiddenMap[row][col] = new WorldMapSquare(Square.P, 0);
+                i++;
+            }
+            i++;
+            row = (int)(Math.random() * map.length);
+            col = (int)(Math.random() * map.length);
+        }
+        
+        i = 0;
+        while (i < 5)
+        {
+            if (!isLocation(row, col))
+            {
+                hiddenMap[row][col] = new WorldMapSquare(Square.H, 0);
+                i++;
+            }
+            i++;
+            row = (int)(Math.random() * map.length);
+            col = (int)(Math.random() * map.length);
+        }
+        
+        i = 0;
+        while (i < 1)
+        {
+            if (!isLocation(row, col))
+            {
+                hiddenMap[row][col] = new WorldMapSquare(Square.E, 0);
+                i++;
+            }
+            i++;
+            row = (int)(Math.random() * map.length);
+            col = (int)(Math.random() * map.length);
+        }
     }
     
     public void showAround(Player p) 
@@ -108,7 +153,21 @@ public class WorldMap
     
     public void setSquareToRoad(int r, int c) 
     {
-        map[r][c] = new WorldMapSquare(Square.HASHTAG, 0);
+        if (!isLocation(r, c))
+        {
+            map[r][c] = new WorldMapSquare(Square.HASHTAG, 0);
+            hiddenMap[r][c] = new WorldMapSquare(Square.HASHTAG, 0);
+        }
+        
+    }
+    
+    private boolean isLocation(int r, int c) 
+    {
+        if (checkValid(r, c)) 
+        {
+            return (hiddenMap[r][c].getSquare() != Square.PERIOD);
+        }
+        return false;
     }
     
     public void reset() {
