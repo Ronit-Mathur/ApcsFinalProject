@@ -362,4 +362,46 @@ public class AdventureTest
         Monster g = new gPeck();
         assertEquals( "G Peck", g.getName() );
     }
+
+
+    @Test
+    public void papaPeckConstructor()
+    {
+        Monster p = new papaPeck();
+        assertNotNull( p );
+    }
+
+
+    @Test
+    public void papaPeckName()
+    {
+        Monster g = new papaPeck();
+        assertEquals( "Papa Peck", g.getName() );
+    }
+
+
+    @Test
+    public void lilPeckConstructor()
+    {
+        Monster lil = new lilPeck();
+        assertNotNull( lil );
+
+    }
+
+
+    @Test
+    public void lilPeckName()
+    {
+        Monster g = new lilPeck();
+        assertEquals( "lil' Peck", g.getName() );
+    }
+
+
+    @Test
+    public void ShannonsterConstructor()
+    {
+        Monster sh = new Shannonster();
+        assertNotNull( sh );
+    }
+
 }
