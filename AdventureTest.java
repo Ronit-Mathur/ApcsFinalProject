@@ -17,6 +17,10 @@ public class AdventureTest
     {
         Player player = new Player( 10, 10, w, 10, 100, 10 );
         assertEquals( player.getHealth(), 100 );
+
+        assertNotNull( player );
+        Player player2 = new Player( 10, 10, w );
+        assertNotNull( player2 );
     }
 
 
@@ -75,6 +79,22 @@ public class AdventureTest
 
 
     @Test
+    public void checkPlayerRow()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        assertEquals( player.getPlayerRow(), 10 );
+    }
+
+
+    @Test
+    public void checkPlayerCol()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        assertEquals( player.getPlayerCol(), 10 );
+    }
+
+
+    @Test
     public void checkHealth()
     {
         Player player = new Player( 10, 10, w, 10, 100, 10 );
@@ -95,6 +115,15 @@ public class AdventureTest
 
 
     @Test
+    public void checkBaseDamage()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        int d = player.getBaseDamage();
+        assertEquals( player.increaseDamage( 10 ), d + 10 );
+    }
+
+
+    @Test
     public void checkMaxHealth()
     {
         Player player = new Player( 10, 10, w, 10, 100, 10 );
@@ -103,6 +132,43 @@ public class AdventureTest
         int m = player.getMaxHealth();
         assertEquals( h + 10, m );
 
+    }
+
+
+    @Test
+    public void checkLower()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        player.lowerHealth( 10 );
+        assertEquals( player.getHealth(), 90 );
+    }
+
+
+    @Test
+    public void checkIncrease()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        player.lowerHealth( 50 );
+        player.increaseHealth( 10 );
+        assertEquals( player.getHealth(), 60 );
+    }
+
+
+    @Test
+    public void checkIncreaseMax()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        player.increaseMaxHealth( 10 );
+        assertEquals( player.getMaxHealth(), 110 );
+    }
+
+
+    @Test
+    public void increaseDmgTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        player.increaseDamage( 10 );
+        assertEquals( player.getBaseDamage(), 20 );
     }
 
 
