@@ -41,7 +41,7 @@ public class BattleControls extends JPanel
                     {
                         // TODO: Add a delay for the monster attack
                         System.out.println(skip);
-                    	if (skip = false) 
+                    	if (!skip) 
                         {
                         	battle.monsterAttack();
                         }

@@ -62,7 +62,18 @@ public class WorldMap
                 hiddenMap[row][col] = new WorldMapSquare(Square.H, 0);
                 i++;
             }
-            i++;
+            row = (int)(Math.random() * map.length);
+            col = (int)(Math.random() * map.length);
+        }
+        
+        i = 0;
+        while (i < 5)
+        {
+            if (!isLocation(row, col))
+            {
+                hiddenMap[row][col] = new WorldMapSquare(Square.D, 0);
+                i++;
+            }
             row = (int)(Math.random() * map.length);
             col = (int)(Math.random() * map.length);
         }

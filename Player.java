@@ -63,6 +63,7 @@ public class Player
         {
             playerRow--;
             world.showAround(this);
+            world.getSquare( playerRow, playerCol ).visit(this);
             return true;
         }
         else
@@ -84,6 +85,7 @@ public class Player
         {
             playerRow++;
             world.showAround(this);
+            world.getSquare( playerRow, playerCol ).visit(this);
             return true;
         }
         else
@@ -104,6 +106,7 @@ public class Player
         {
             playerCol--;
             world.showAround(this);
+            world.getSquare( playerRow, playerCol ).visit(this);
             return true;
         }
         else
@@ -124,6 +127,7 @@ public class Player
         {
             playerCol++;
             world.showAround(this);
+            world.getSquare( playerRow, playerCol ).visit(this);
             return true;
         }
         else
@@ -189,6 +193,11 @@ public class Player
     }
 
 
+    public int getBaseDamage()
+    {
+        return dmg;
+    }
+    
     public int getDamage()
     {
         return (int)(dmg / 2.0 + (dmg * Math.random()));
@@ -206,7 +215,7 @@ public class Player
     
     public int increaseHealth(int d)
     {
-    	if ((health +d ) != maxHealth )
+    	if ((health +d ) < maxHealth )
     	{
     		health += d;
     		return health;
@@ -216,6 +225,18 @@ public class Player
     		health = maxHealth;
     		return health;
     	}
+    }
+    
+    public int increaseMaxHealth(int d) 
+    {
+        maxHealth += d;
+        return maxHealth;
+    }
+    
+    public int increaseDamage(int d)
+    {
+        dmg += d;
+        return dmg;
     }
     
     public boolean checkDeath() 

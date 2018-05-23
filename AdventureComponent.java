@@ -62,6 +62,7 @@ public class AdventureComponent extends JComponent
 	{
 	    map = world.getMap();
 		Font mapFont = new Font("Courier", Font.BOLD, 12);
+		g2.setColor( Color.BLACK );
 		g2.setFont(mapFont);
 		int x = 50;
 		int y = 50;
@@ -76,23 +77,51 @@ public class AdventureComponent extends JComponent
 				} 
 				else 
 				{
+				    if (world.getSquare( r, c ).visited())
+				    {
+				        g2.setColor( Color.GRAY );
+				    }
 					g2.drawString(map[r][c].getCharacter() + "", y + 12 * c, x + 12 * r);
+					g2.setColor( Color.BLACK );
 				}
 			}
 		}
 	}
 
-	private void drawSidebar(Graphics2D g2) {
-		Font sideFont = new Font("Courier", Font.BOLD, 18);
-		g2.setColor(Color.GRAY);
+	private void drawSidebar(Graphics2D g2) 
+	{
+	    g2.setColor(Color.GRAY);
+	    Font f1 = new Font("Courier", Font.BOLD, 18);
+	    g2.setFont( f1 );
+	    g2.drawString("Adventure", 475, 85);
+		Font sideFont = new Font("Courier", Font.PLAIN, 14);
+		
 
 		// Right sidebar menu
 		g2.setFont(sideFont);
 		Rectangle sidebar = new Rectangle(450, 45, 300, 375);
 		g2.draw(sidebar);
-		g2.drawString("Adventure", 475, 85);
-		g2.drawString("Row: " + player.getPlayerRow(), 475, 100);
-		g2.drawString("Col: " + player.getPlayerCol(), 475, 115);
+		
+		g2.drawString("Row: " + player.getPlayerRow(), 475, 105);
+		g2.drawString("Col: " + player.getPlayerCol(), 475, 120);
+		drawPlayerStats(g2, 475, 150);
+	}
+	
+	private void drawPlayerStats(Graphics2D g2, int x, int y)
+	{
+	    Font f = new Font("Courier", Font.PLAIN, 12);
+	    g2.setColor( Color.BLACK );
+	    g2.setFont( f );
+	    g2.drawString( "PLAYER", x, y );
+        g2.drawString( player.getHealth() + "/" + player.getMaxHealth(), x + 200, y );
+        Rectangle h = new Rectangle(x, y + 5, (int)(250 * (player.getHealth() * 1.0 / player.getMaxHealth() )), 25);
+        g2.setColor( Color.GREEN );
+        g2.fill( h );
+        Rectangle border = new Rectangle(x, y + 5, 250, 25);
+        g2.setColor( Color.BLACK );
+        g2.draw( border );
+        
+        g2.drawString( "DAMAGE: " + player.getBaseDamage(), x, y + 55 );
 	}
 	
 	private void drawGameOver(Graphics2D g2) 

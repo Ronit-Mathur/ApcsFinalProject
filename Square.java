@@ -8,7 +8,7 @@ public enum Square {
     HASHTAG('#'), 
     P('P'), 
     H('H'),
-    M('M'),
+    D('D'),
     E('E'),
     PLAYER('@');
     private final char character;
