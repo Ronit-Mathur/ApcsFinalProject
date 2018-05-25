@@ -164,11 +164,41 @@ public class AdventureTest
 
 
     @Test
+    public void checkIncToMax()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        int mh = player.getMaxHealth();
+        player.lowerHealth( 10 );
+        assertEquals( player.increaseHealthToMax(), mh );
+
+    }
+
+
+    @Test
     public void increaseDmgTest()
     {
         Player player = new Player( 10, 10, w, 10, 100, 10 );
         player.increaseDamage( 10 );
         assertEquals( player.getBaseDamage(), 20 );
+    }
+
+
+    @Test
+    public void getBlockTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        assertEquals( player.getBlock(), 10 );
+
+    }
+
+
+    @Test
+    public void increaseBlockTest()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        int b = player.getBlock();
+        int inc = player.increaseBlock( 10 );
+        assertEquals( inc, b + 10 );
     }
 
 
@@ -180,14 +210,14 @@ public class AdventureTest
         assertTrue( player.checkDeath() );
     }
 
-    // //Battle tests TODO Battle Tests
-    //
-    // public void createBattle()
-    // {
-    // Player player = new Player( 10, 10, w, 10, 100, 10 );
-    // Monster monster = new Monster( )
-    // Battle battle = new Battle( player, m)
-    // }
+
+    @Test
+    public void checkSteps()
+    {
+        Player player = new Player( 10, 10, w, 10, 100, 10 );
+        player.moveDown();
+        assertEquals( player.getSteps(), 1 );
+    }
 
 
     // AdventureComponent Tests
@@ -235,27 +265,6 @@ public class AdventureTest
         scene.movePlayer( Move.UP );
         assertEquals( scene.getPlayer().getPlayerRow(), row - 1 );
     }
-
-    // //Battle tests TODO Battle Tests
-    //
-    // public void createBattle()
-    // {
-    // Player player = new Player( 10, 10, w, 10, 100, 10 );
-    // Monster monster = new Monster( )
-    // Battle battle = new Battle( player, m)
-    // }
-
-    // IDK HOW TO DO THIS ONE
-    //
-    // TODO
-    //
-    //
-    // @Test
-    // public void testPaintComponent()
-    // {
-    // Graphics2D g;
-    // AdventureComponent.paintComponent( g );
-    // }
 
 
     // Battle Tests
