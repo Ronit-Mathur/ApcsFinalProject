@@ -22,9 +22,11 @@ public class Player
 
     private int health;
 
-    private int cooldown;
+    private int block;
     
     private int maxHealth;
+    
+    private int steps;
 
 
     /**
@@ -37,18 +39,47 @@ public class Player
      */
     public Player( int r, int c, WorldMap w )
     {
-        this(r, c, w, 10, 100, 10);
+        this(r, c, w, 10, 100, 35);
+        
     }
     
-    public Player(int r, int c, WorldMap w, int damage, int h, int cool) {
+    public Player(int r, int c, WorldMap w, int damage, int h, int b) {
         playerRow = r;
         playerCol = c;
         world = w;
         
-        dmg = damage;
-        health = h;
-        cooldown = cool;
-        maxHealth = h;
+        if (dmg < 0)
+        {
+            dmg = 10;
+        }
+        else 
+        {
+            dmg = damage;
+        }
+        if (health < 0)
+        {
+            health = 100; 
+        }
+        else
+        {
+            health = h;
+        }
+        
+        if (block < 0)
+        {
+            block = 0;
+        }
+        else if (block > 100) 
+        {
+            block = 100;
+        }
+        else 
+        {
+            block = b;
+        }
+        
+        maxHealth = health;
+        steps = 0;
     }
 
 
@@ -64,6 +95,7 @@ public class Player
             playerRow--;
             world.showAround(this);
             world.getSquare( playerRow, playerCol ).visit(this);
+            steps++;
             return true;
         }
         else
@@ -86,6 +118,7 @@ public class Player
             playerRow++;
             world.showAround(this);
             world.getSquare( playerRow, playerCol ).visit(this);
+            steps++;
             return true;
         }
         else
@@ -107,6 +140,7 @@ public class Player
             playerCol--;
             world.showAround(this);
             world.getSquare( playerRow, playerCol ).visit(this);
+            steps++;
             return true;
         }
         else
@@ -128,6 +162,7 @@ public class Player
             playerCol++;
             world.showAround(this);
             world.getSquare( playerRow, playerCol ).visit(this);
+            steps++;
             return true;
         }
         else
@@ -203,6 +238,11 @@ public class Player
         return (int)(dmg / 2.0 + (dmg * Math.random()));
     }
     
+    public int getBlock()
+    {
+        return block;
+    }
+    
     public int lowerHealth(int d) 
     {
         health -= d;
@@ -233,14 +273,35 @@ public class Player
         return maxHealth;
     }
     
+    public int increaseHealthToMax()
+    {
+        health = maxHealth;
+        return health;
+    }
+    
     public int increaseDamage(int d)
     {
         dmg += d;
         return dmg;
     }
     
+    public int increaseBlock(int d)
+    {
+        block += d;
+        if (block > 100)
+        {
+            block = 100;
+        }
+        return block;
+    }
+    
     public boolean checkDeath() 
     {
         return health == 0;
+    }
+    
+    public int getSteps()
+    {
+        return steps;
     }
 }

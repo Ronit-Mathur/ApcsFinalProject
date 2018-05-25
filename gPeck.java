@@ -1,7 +1,6 @@
 
 public class gPeck extends Monster
 {
-    private static WorldMap world;
 
     /**
      * gPeck is a modified Monster
@@ -10,7 +9,7 @@ public class gPeck extends Monster
     public gPeck()
     {
 
-        super( 10, 300);
+        super( 10, 120);
 
     }
     /**

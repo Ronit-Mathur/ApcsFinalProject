@@ -15,6 +15,7 @@ public class WorldMapSquare
     private Square square;
     private int danger; 
     private boolean visited;
+    private boolean exit;
     /**
      * Creates a grid square
      * @param s the Square enum the square should display
@@ -34,6 +35,8 @@ public class WorldMapSquare
             danger = d;
         }
         visited = false;
+        
+        exit = (s == Square.E);
     }
     
     /**
@@ -75,7 +78,7 @@ public class WorldMapSquare
         {
             effect(p, getSquare());
         }
-        if (getSquare() == Square.P || getSquare() == Square.H || getSquare() == Square.D) 
+        if (getSquare() == Square.P || getSquare() == Square.H || getSquare() == Square.D || getSquare() == Square.B) 
         {
             visited = true;
         }
@@ -87,6 +90,11 @@ public class WorldMapSquare
         return visited;
     }
     
+    public boolean isExit()
+    {
+        return exit;
+    }
+    
     private void effect(Player p, Square s)
     {
         if (s == Square.P)
@@ -96,11 +104,15 @@ public class WorldMapSquare
         else if (s == Square.H)
         {
             p.increaseMaxHealth( 20 );
-            p.increaseHealth( 20 );
+            p.increaseHealthToMax();
         }
         else if (s == Square.D) 
         {
             p.increaseDamage(5);
+        }
+        else if (s == Square.B)
+        {
+            p.increaseBlock(5);
         }
     }
 }

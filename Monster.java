@@ -19,7 +19,7 @@ public class Monster
     
     public Monster() {
         dmg = 5;
-        health = 50;
+        health = 40;
         maxHealth = health;
     }
     /**

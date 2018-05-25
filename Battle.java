@@ -36,11 +36,11 @@ public class Battle implements ActionListener
         {
             q.add( new Monster() );
         }
-        else if (r < 87)
+        else if (r < 90)
         {
             q.add( new lilPeck() );
         }
-        else if (r < 95)
+        else if (r < 97)
         {
             q.add( new gPeck() );
         }

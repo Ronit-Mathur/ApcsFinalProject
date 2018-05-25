@@ -3,7 +3,7 @@ public class papaPeck extends Monster
 {
     public papaPeck()
     {
-        super( 4, 250 );
+        super( 5, 250 );
     }
     
     public String getName() 

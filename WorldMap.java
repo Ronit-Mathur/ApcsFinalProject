@@ -37,12 +37,13 @@ public class WorldMap
         fillHiddenMap();
     }
     
+    
     private void fillHiddenMap()
     {
         int row = (int)(Math.random() * map.length);
         int col = (int)(Math.random() * map.length);
         int i = 0;
-        while (i < 10)
+        while (i < 15)
         {
             if (!isLocation(row, col))
             {
@@ -72,6 +73,18 @@ public class WorldMap
             if (!isLocation(row, col))
             {
                 hiddenMap[row][col] = new WorldMapSquare(Square.D, 0);
+                i++;
+            }
+            row = (int)(Math.random() * map.length);
+            col = (int)(Math.random() * map.length);
+        }
+        
+        i = 0;
+        while (i < 2)
+        {
+            if (!isLocation(row, col))
+            {
+                hiddenMap[row][col] = new WorldMapSquare(Square.B, 0);
                 i++;
             }
             row = (int)(Math.random() * map.length);

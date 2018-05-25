@@ -44,24 +44,28 @@ public class AdventureFrame extends JFrame
                     // A
                     scene.movePlayer( Move.LEFT );
                     checkMonster();
+                    checkWon();
                 }
                 else if ( keyCode == 119 )
                 {
                     // W
                     scene.movePlayer( Move.UP );
                     checkMonster();
+                    checkWon();
                 }
                 else if ( keyCode == 100 )
                 {
                     // D
                     scene.movePlayer( Move.RIGHT );
                     checkMonster();
+                    checkWon();
                 }
                 else if ( keyCode == 115 )
                 {
                     // S
                     scene.movePlayer( Move.DOWN );
                     checkMonster();
+                    checkWon();
                 }
                 
                 pressed = true;
@@ -98,6 +102,7 @@ public class AdventureFrame extends JFrame
                 public void windowClosed( WindowEvent arg0 )
                 {
                     canMove = true;
+                    scene.repaint();
                     if (scene.checkPlayerDeath()) 
                     {
                         System.out.println("RESET");
@@ -129,7 +134,13 @@ public class AdventureFrame extends JFrame
             System.out.println( "no monster" );
         }
     }
-    
+    private void checkWon()
+    {
+        if (scene.checkExit()) 
+        {
+            resetScene();
+        }
+    }
     private void resetScene() 
     {
 //        getContentPane().remove( scene );

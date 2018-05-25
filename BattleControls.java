@@ -91,7 +91,7 @@ public class BattleControls extends JPanel
             {
                 if (!battle.checkEnded())
                 {
-                    double chanceOfBlock = .35;
+                    double chanceOfBlock = battle.getPlayer().getBlock() / 100.0;
                     if ( Math.random() <= chanceOfBlock )
                     {
                         if ( battle.getPlayer().getHealth() <= (battle.getPlayer().getMaxHealth() - 10) )

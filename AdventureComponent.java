@@ -51,6 +51,10 @@ public class AdventureComponent extends JComponent
 		    drawGameOver(g2);
 		    endScreen = true;
 		}
+		else if (checkExit())
+		{
+		    drawGameWon(g2);
+		}
 		// TODO: add when player reaches exit to draw win screen
 		else 
 		{
@@ -96,7 +100,7 @@ public class AdventureComponent extends JComponent
 
 	private void drawSidebar(Graphics2D g2) 
 	{
-	    g2.setColor(Color.GRAY);
+	    g2.setColor(Color.BLACK);
 	    Font f1 = new Font("Courier", Font.BOLD, 18);
 	    g2.setFont( f1 );
 	    g2.drawString("Adventure", 475, 85);
@@ -128,6 +132,7 @@ public class AdventureComponent extends JComponent
         g2.draw( border );
         
         g2.drawString( "DAMAGE: " + player.getBaseDamage(), x, y + 55 );
+        g2.drawString( "BLOCK: " + player.getBlock(), x, y + 70 );
 	}
 	
 	private void drawGameOver(Graphics2D g2) 
@@ -151,7 +156,8 @@ public class AdventureComponent extends JComponent
         g2.fill(r);
         g2.setColor( Color.WHITE );
         
-        g2.drawString( "EXIT", 170, 200 );
+        g2.drawString( "YOU WON", 175, 200 );
+        g2.drawString( "STEPS: " + player.getSteps(), 170, 220 );
     }
 
 	public void movePlayer(Move m) {
@@ -179,6 +185,11 @@ public class AdventureComponent extends JComponent
 	        repaint();
 	    }
 	    return player.checkDeath();
+	}
+	
+	public boolean checkExit()
+	{
+	    return world.getSquare( player.getPlayerRow(), player.getPlayerCol() ).isExit();
 	}
 	public Player getPlayer() {
 		return player;
