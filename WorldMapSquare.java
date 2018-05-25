@@ -75,7 +75,11 @@ public class WorldMapSquare
         {
             effect(p, getSquare());
         }
-        visited = true;
+        if (getSquare() == Square.P || getSquare() == Square.H || getSquare() == Square.D) 
+        {
+            visited = true;
+        }
+        
     }
     
     public boolean visited()
@@ -92,6 +96,7 @@ public class WorldMapSquare
         else if (s == Square.H)
         {
             p.increaseMaxHealth( 20 );
+            p.increaseHealth( 20 );
         }
         else if (s == Square.D) 
         {

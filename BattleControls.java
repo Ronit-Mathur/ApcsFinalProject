@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 import java.awt.GridLayout;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 public class BattleControls extends JPanel
 {
@@ -22,6 +25,8 @@ public class BattleControls extends JPanel
     private BattleFrame frame;
     
     private boolean skip = false;
+    
+    Timer timer;
 
     public BattleControls( Battle b, BattleFrame f )
     {
@@ -29,6 +34,8 @@ public class BattleControls extends JPanel
         frame = f;
         JButton aButton = new JButton( "Attack" );
         JButton bButton = new JButton( "Block" );
+        
+        timer = new Timer();
         attack = new ActionListener()
         {
             public void actionPerformed( ActionEvent e )
@@ -39,11 +46,18 @@ public class BattleControls extends JPanel
                     battle.playerAttack();
                     if ( !battle.checkEnded() )
                     {
-                        // TODO: Add a delay for the monster attack
                         System.out.println(skip);
                     	if (!skip) 
                         {
-                        	battle.monsterAttack();
+                    	    
+                            timer.schedule(new TimerTask() {
+                                public void run()
+                                {
+                                    battle.monsterAttack();
+                                }
+                                
+                            }, 200);
+                        	
                         }
                         else
                         {
@@ -51,14 +65,21 @@ public class BattleControls extends JPanel
                         }
                     	
                     }
+                    else
+                    {
+                        timer.cancel();
+                    }
                 }
                 else
                 {
                     System.out.println( "Not Attacked" );
+                    timer.cancel();
+                    
                     frame.dispose();
                 }
                 
                 if (battle.checkEnded()) {
+                    timer.cancel();
                     frame.dispose();
                 }
             }
@@ -68,23 +89,37 @@ public class BattleControls extends JPanel
         {
             public void actionPerformed( ActionEvent e )
             {
-                double chanceOfBlock = .35;
-                if ( Math.random() <= chanceOfBlock )
+                if (!battle.checkEnded())
                 {
-                	if ( battle.getPlayer().getHealth() <= (battle.getPlayer().getMaxHealth() - 10) )
-                	{
-                		battle.getPlayer().increaseHealth(10);
-                		skip = true;
-                		System.out.println( "Blocked" );
-                	}
+                    double chanceOfBlock = .35;
+                    if ( Math.random() <= chanceOfBlock )
+                    {
+                        if ( battle.getPlayer().getHealth() <= (battle.getPlayer().getMaxHealth() - 10) )
+                        {
+                            battle.getPlayer().increaseHealth(10);
+                            skip = true;
+                            System.out.println( "Blocked" );
+                        }
+                    }
+                    else
+                    {
+                        skip = false;
+                        battle.monsterAttack();
+                        System.out.println( "Not Blocked" );
+                    }
                 }
                 else
                 {
-                	skip = false;
-                	battle.monsterAttack();
-                	System.out.println( "Not Blocked" );
+                    System.out.println( "Not Attacked" );
+                    timer.cancel();
+                    
+                    frame.dispose();
                 }
-                // TODO
+                
+                if (battle.checkEnded()) {
+                    timer.cancel();
+                    frame.dispose();
+                }
                 
             }
         };

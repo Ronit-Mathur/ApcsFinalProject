@@ -51,6 +51,7 @@ public class AdventureComponent extends JComponent
 		    drawGameOver(g2);
 		    endScreen = true;
 		}
+		// TODO: add when player reaches exit to draw win screen
 		else 
 		{
 		    drawWorld(g2);
@@ -80,6 +81,11 @@ public class AdventureComponent extends JComponent
 				    if (world.getSquare( r, c ).visited())
 				    {
 				        g2.setColor( Color.GRAY );
+				    }
+				    
+				    if (world.getSquare( r, c ).getSquare() == Square.E)
+				    {
+				        g2.setColor( Color.GREEN );
 				    }
 					g2.drawString(map[r][c].getCharacter() + "", y + 12 * c, x + 12 * r);
 					g2.setColor( Color.BLACK );
@@ -134,10 +140,19 @@ public class AdventureComponent extends JComponent
 	    g2.setColor( Color.WHITE );
 	    
 	    g2.drawString( "GAME OVER", 170, 200 );
-//	    Font f1 = new Font("Courier", Font.PLAIN, 12);
-//        g2.setFont( f1 );
-//	    g2.drawString( "Press 'w' to restart.", 180, 210 );
 	}
+	
+	private void drawGameWon(Graphics2D g2) 
+    {
+        Font f = new Font("Courier", Font.BOLD, 18);
+        g2.setFont( f );
+        Rectangle r = new Rectangle(50, 50, 340, 350);
+        g2.setColor( Color.GREEN);
+        g2.fill(r);
+        g2.setColor( Color.WHITE );
+        
+        g2.drawString( "EXIT", 170, 200 );
+    }
 
 	public void movePlayer(Move m) {
 	    world.setSquareToRoad( player.getPlayerRow(), player.getPlayerCol() );

@@ -159,7 +159,7 @@ public class WorldMap
      * @return true if the row and column are in the map
      */
     private boolean checkValid(int r, int c) {
-        return !(r < 0 || r > map.length || c < 0 || c > map[0].length);
+        return !(r < 0 || r >= map.length || c < 0 || c >= map[0].length);
     }
     
     public void setSquareToRoad(int r, int c) 
