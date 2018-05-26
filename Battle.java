@@ -8,7 +8,7 @@ import java.util.Queue;
 public class Battle implements ActionListener
 {
     private Player player;
-    private static Queue<Monster> q = new LinkedList<Monster>() 
+    public static Queue<Monster> q = new LinkedList<Monster>() 
     {{
             add(new Monster());
     }};
@@ -78,6 +78,7 @@ public class Battle implements ActionListener
             fillMonsterList();
             // player win
             System.out.println( "Player won" );
+            player.increaseMaxHealth( 5 );
         }
         else
         {

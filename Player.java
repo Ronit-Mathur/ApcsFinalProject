@@ -304,4 +304,9 @@ public class Player
     {
         return steps;
     }
+    
+    public WorldMap getWorld()
+    {
+        return world;
+    }
 }

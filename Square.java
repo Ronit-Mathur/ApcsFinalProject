@@ -10,6 +10,7 @@ public enum Square {
     H('H'),
     D('D'),
     B('B'),
+    M('M'),
     E('E'),
     PLAYER('@');
     private final char character;

@@ -112,7 +112,11 @@ public class WorldMapSquare
         }
         else if (s == Square.B)
         {
-            p.increaseBlock(5);
+            p.increaseBlock(3);
+        }
+        else if (s == Square.M)
+        {
+            p.getWorld().showAroundRandom();
         }
     }
 }

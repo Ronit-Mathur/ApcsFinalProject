@@ -91,6 +91,10 @@ public class AdventureComponent extends JComponent
 				    {
 				        g2.setColor( Color.GREEN );
 				    }
+				    if (world.getSquare( r, c ).getSquare() == Square.M)
+                    {
+                        g2.setColor( Color.RED );
+                    }
 					g2.drawString(map[r][c].getCharacter() + "", y + 12 * c, x + 12 * r);
 					g2.setColor( Color.BLACK );
 				}
@@ -133,6 +137,8 @@ public class AdventureComponent extends JComponent
         
         g2.drawString( "DAMAGE: " + player.getBaseDamage(), x, y + 55 );
         g2.drawString( "BLOCK: " + player.getBlock(), x, y + 70 );
+        
+        g2.drawString( "NEXT: " + Battle.q.peek().getName(), x, y + 85 );
 	}
 	
 	private void drawGameOver(Graphics2D g2) 

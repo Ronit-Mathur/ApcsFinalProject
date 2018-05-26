@@ -91,6 +91,18 @@ public class WorldMap
             col = (int)(Math.random() * map.length);
         }
         
+//        i = 0;
+//        while (i < 60)
+//        {
+//            if (!isLocation(row, col))
+//            {
+//                hiddenMap[row][col] = new WorldMapSquare(Square.M, 100);
+//                i++;
+//            }
+//            row = (int)(Math.random() * map.length);
+//            col = (int)(Math.random() * map.length);
+//        }
+        
         i = 0;
         while (i < 1)
         {
@@ -109,15 +121,40 @@ public class WorldMap
     {
         int pRow = p.getPlayerRow();
         int pCol = p.getPlayerCol();
-        for (int i = -2; i <= 2; i++) 
+        for (int i = -3; i <= 3; i++) 
         {
-            for (int j = -2; j <= 2; j++) 
+            for (int j = -3; j <= 3; j++) 
             {
-                if (!(Math.abs( j ) == 2 && Math.abs( i ) == 2))
+                if (Math.abs( j ) + Math.abs( i ) <= 3)
                 {
                     if (checkValid(pRow + i, pCol + j)) 
                     {
                         map[pRow + i][pCol + j] = hiddenMap[pRow + i][pCol+j];
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    public void showAroundRandom() 
+    {
+        int r = (int)(Math.random() * map.length);
+        int c = (int)(Math.random() * map[r].length);
+        while (map[r][c].getSquare() != Square.SPACE)
+        {
+            r = (int)(Math.random() * map.length);
+            c = (int)(Math.random() * map[r].length);
+        }
+        for (int i = -4; i <= 4; i++) 
+        {
+            for (int j = -4; j <= 4; j++) 
+            {
+                if (Math.abs( j ) + Math.abs( i ) <= 4)
+                {
+                    if (checkValid(r + i, c + j)) 
+                    {
+                        map[r + i][c + j] = hiddenMap[r + i][c + j];
                     }
                 }
                 
