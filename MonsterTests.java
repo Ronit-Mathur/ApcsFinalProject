@@ -5,6 +5,8 @@ import org.junit.Test;
 
 /**
  * Monster and Monster subclass tests
+ * Subclasses tested:
+ * gPeck, lilPeck, papaPeck, Shannonster
  *
  * @author
  * @version May 27, 2018
@@ -46,8 +48,9 @@ public class MonsterTests
     @Test
     public void monsterLowerHealth()
     {
+        // monster starting health 100
         mon.lowerHealth( 10 );
-        assertEquals( 30, mon.getHealth() );
+        assertEquals( 90, mon.getHealth() );
     }
 
 
@@ -55,7 +58,7 @@ public class MonsterTests
     public void getMonsMaxHealth()
     {
         mon.lowerHealth( 10 );
-        assertEquals( mon.getMaxHealth(), mon.getHealth() + 10 );
+        assertEquals( mon.getHealth() + 10, mon.getMaxHealth() );
     }
 
 

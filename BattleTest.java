@@ -32,15 +32,14 @@ public class BattleTest
 
 
     // TODO
-//    @Test
-//    public void checkEndedTest()
-//    {
-//        Battle b = new Battle( player, monster );
-//        b.startBattle();
-//        b.monsterAttack();
-//        assertTrue( b.checkEnded() );
-//    }
-
+    // @Test
+    // public void checkEndedTest()
+    // {
+    // Battle b = new Battle( player, monster );
+    // b.startBattle();
+    // b.monsterAttack();
+    // assertTrue( b.checkEnded() );
+    // }
 
     @Test
     public void endBattleTest()
@@ -73,4 +72,7 @@ public class BattleTest
     // actionperformed test ????
     // TODO
 
+    // TODO BattleControl Tests
+    // TODO BattleFrame
+    // TODO BattleComponent
 }
