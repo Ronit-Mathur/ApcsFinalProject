@@ -2,7 +2,7 @@
  * 
  * Location of the player on the map
  *
- * @author 
+ * @author
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: ApcsFinalProject
@@ -12,20 +12,45 @@
 public class Player
 {
 
+    /**
+     * Player's row on map grid
+     */
     private int playerRow;
 
+    /**
+     * Player's column on map grid
+     */
     private int playerCol;
 
+    /**
+     * WorldMap player is in
+     */
     private WorldMap world;
 
+    /**
+     * Attack Damage
+     */
     private int dmg;
 
+    /**
+     * Player's Health
+     */
     private int health;
 
+    /**
+     * Block constant Multiplied by a random value to determine whether user can
+     * block monster's attack or not
+     */
     private int block;
-    
+
+    /**
+     * Player's maximum health ntk for health restoration
+     */
     private int maxHealth;
-    
+
+    /**
+     * Number of steps it takes for player to reach end or die
+     */
     private int steps;
 
 
@@ -36,48 +61,60 @@ public class Player
      *            row number for player to start (begins at 0)
      * @param c
      *            column number for player to start (begins at 0)
-     */
+     * @param w   worldmap player spawns in
+     */ 
     public Player( int r, int c, WorldMap w )
     {
-        this(r, c, w, 10, 100, 35);
-        
+        this( r, c, w, 10, 100, 35 );
+
     }
-    
-    public Player(int r, int c, WorldMap w, int damage, int h, int b) {
+
+
+    /**
+     * Constructs player and lets them start somewhere on the grid
+     * @param r row number for player to start (begins at 0)
+     * @param c column number for player to start (begins at 0)
+     * @param w worldmap player spawns in
+     * @param damage starting attack damage
+     * @param h starting health
+     * @param b block constant
+     */
+    public Player( int r, int c, WorldMap w, int damage, int h, int b )
+    {
         playerRow = r;
         playerCol = c;
         world = w;
-        
-        if (dmg < 0)
+
+        if ( dmg < 0 )
         {
             dmg = 10;
         }
-        else 
+        else
         {
             dmg = damage;
         }
-        if (health < 0)
+        if ( health < 0 )
         {
-            health = 100; 
+            health = 100;
         }
         else
         {
             health = h;
         }
-        
-        if (block < 0)
+
+        if ( block < 0 )
         {
             block = 0;
         }
-        else if (block > 100) 
+        else if ( block > 100 )
         {
             block = 100;
         }
-        else 
+        else
         {
             block = b;
         }
-        
+
         maxHealth = health;
         steps = 0;
     }
@@ -93,8 +130,8 @@ public class Player
         if ( checkMove( playerRow - 1, playerCol ) )
         {
             playerRow--;
-            world.showAround(this);
-            world.getSquare( playerRow, playerCol ).visit(this);
+            world.showAround( this );
+            world.getSquare( playerRow, playerCol ).visit( this );
             steps++;
             return true;
         }
@@ -102,7 +139,7 @@ public class Player
         {
             return false;
         }
-        
+
     }
 
 
@@ -116,8 +153,8 @@ public class Player
         if ( checkMove( playerRow + 1, playerCol ) )
         {
             playerRow++;
-            world.showAround(this);
-            world.getSquare( playerRow, playerCol ).visit(this);
+            world.showAround( this );
+            world.getSquare( playerRow, playerCol ).visit( this );
             steps++;
             return true;
         }
@@ -138,8 +175,8 @@ public class Player
         if ( checkMove( playerRow, playerCol - 1 ) )
         {
             playerCol--;
-            world.showAround(this);
-            world.getSquare( playerRow, playerCol ).visit(this);
+            world.showAround( this );
+            world.getSquare( playerRow, playerCol ).visit( this );
             steps++;
             return true;
         }
@@ -160,8 +197,8 @@ public class Player
         if ( checkMove( playerRow, playerCol + 1 ) )
         {
             playerCol++;
-            world.showAround(this);
-            world.getSquare( playerRow, playerCol ).visit(this);
+            world.showAround( this );
+            world.getSquare( playerRow, playerCol ).visit( this );
             steps++;
             return true;
         }
@@ -209,18 +246,33 @@ public class Player
     }
 
 
+    /**
+     * Checks whether player's move is valid and within grid
+     * @param r row player is moving to
+     * @param c column player is moving to
+     * @return true if within the grid
+     */
     private boolean checkMove( int r, int c )
     {
         return !( r < 0 || r > world.getMapRows() - 1 || c < 0 || c > world.getMapCols() - 1 );
     }
 
 
+    /**
+     * Return's player's current health
+     * @return player's current health
+     */
     public int getHealth()
     {
         return health;
 
     }
-    
+
+
+    /**
+     * Return's the max health the player can reach
+     * @return player's max health
+     */
     public int getMaxHealth()
     {
         return maxHealth;
@@ -228,83 +280,135 @@ public class Player
     }
 
 
+    /**
+     * Returns player's potential damage
+     * @return potential damage
+     */
     public int getBaseDamage()
     {
         return dmg;
     }
-    
+
+
+    /**
+     * Calculates random damage player deals with an attack
+     * @return damage
+     */
     public int getDamage()
     {
-        return (int)(dmg / 2.0 + (dmg * Math.random()));
+        return (int)( dmg / 2.0 + ( dmg * Math.random() ) );
     }
-    
+
+
+    /**
+     * Returns block constant
+     * @return block value
+     */
     public int getBlock()
     {
         return block;
     }
-    
-    public int lowerHealth(int d) 
+
+
+    public int lowerHealth( int d )
     {
         health -= d;
-        if (health < 0) {
+        if ( health < 0 )
+        {
             health = 0;
             return 0;
         }
         return health;
     }
-    
-    public int increaseHealth(int d)
+
+
+    /**
+     * Heals the player by a specified amount
+     * @param d value to heal player by
+     * @return new health
+     */
+    public int increaseHealth( int d )
     {
-    	if ((health +d ) < maxHealth )
-    	{
-    		health += d;
-    		return health;
-    	}
-    	else
-    	{
-    		health = maxHealth;
-    		return health;
-    	}
+        if ( ( health + d ) < maxHealth )
+        {
+            health += d;
+            return health;
+        }
+        else
+        {
+            health = maxHealth;
+            return health;
+        }
     }
-    
-    public int increaseMaxHealth(int d) 
+
+
+    /**
+     * Increases health threshold by specified amuount
+     * @param d value to increase maxHealth by
+     * @return new maxHealth
+     */
+    public int increaseMaxHealth( int d )
     {
         maxHealth += d;
         return maxHealth;
     }
-    
+
+
+    /**
+     * Heals player completely
+     * @return health
+     */
     public int increaseHealthToMax()
     {
         health = maxHealth;
         return health;
     }
-    
-    public int increaseDamage(int d)
+
+
+    /**
+     * Increases damage constant
+     * @param d value to increase damage by
+     * @return new attack damage
+     */
+    public int increaseDamage( int d )
     {
         dmg += d;
         return dmg;
     }
-    
-    public int increaseBlock(int d)
+
+
+    /**
+     * Increases block constant, max of 100
+     * @param d value to increase block by
+     * @return new block value
+     */
+    public int increaseBlock( int d )
     {
         block += d;
-        if (block > 100)
+        if ( block > 100 )
         {
             block = 100;
         }
         return block;
     }
-    
-    public boolean checkDeath() 
+
+
+    /**
+     * Checks if player's health is at 0
+     * @return true if dead
+     */
+    public boolean checkDeath()
     {
         return health == 0;
     }
-    
+
+
     public int getSteps()
     {
         return steps;
     }
-    
+
+
     public WorldMap getWorld()
     {
         return world;
