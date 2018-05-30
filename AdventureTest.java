@@ -74,7 +74,7 @@ public class AdventureTest
     }
 
 
-    // Battle Tests
+    // BATTLE TESTS
 
     @Test
     public void getBattlesPlayerTest()
@@ -94,7 +94,16 @@ public class AdventureTest
         Battle b = new Battle( player, monster );
         assertNotNull( b.getMonster() );
     }
-
+    
+    @Test
+    public void checkEndBattle()
+    {
+    	Battle b = new Battle( player, monster );
+    	int initialHealth;
+    	initialHealth = player.getMaxHealth();
+    	b.endBattle( true );
+    	assertEquals( 5, player.getMaxHealth() - initialHealth );
+    }
     // Monster and Monster subclasses Tests
 
 
@@ -154,6 +163,14 @@ public class AdventureTest
         assertTrue( ( player.getHealth() > ( 100 - 15 ) ) || ( player.getHealth() < ( 100 - 5 ) ) );
     }
 
+    @Test
+    public void monsterAttackTestZeroHealth()
+    {
+    	Battle b = new Battle( player, monster );
+    	player.lowerHealth( 100 );
+    	b.monsterAttack();
+        assertEquals( 0, player.getHealth() );
+    }
 
     @Test
     public void playerAttackTest()
@@ -162,6 +179,15 @@ public class AdventureTest
         b.playerAttack();
         assertTrue(
             ( monster.getHealth() > ( 300 - 15 ) ) || ( monster.getHealth() < ( 300 - 5 ) ) );
+    }
+    
+    @Test
+    public void playerAttackTestZeroHealth()
+    {
+    	Battle b = new Battle( player, monster );
+    	monster.lowerHealth( 1000 );
+    	b.playerAttack();
+        assertEquals( 0, monster.getHealth() );
     }
 
     // actionperformed test ????
@@ -203,6 +229,13 @@ public class AdventureTest
         assertEquals( 90, mon.getHealth() );
     }
 
+    @Test
+    public void monsterLowerHealthLessThanZero()
+    {
+    	mon.lowerHealth(100);
+    	mon.lowerHealth(10);
+    	assertEquals( 0, mon.getHealth());
+    }
 
     @Test
     public void getMonsMaxHealth()
@@ -290,6 +323,12 @@ public class AdventureTest
         assertEquals( rTest, player.getPlayerRow() + 1 );
     }
 
+//    @Test TODO MOVES RETURN FALSE
+//    public void checkIfNotMoveUp()
+//    {
+//    	Player playerNot = new Player( 0, 0, w );
+//        assertFalse( player.moveUp() );
+//    }
 
     @Test
     public void checkIfMoveDown()
@@ -397,6 +436,14 @@ public class AdventureTest
         player.increaseHealth( 10 );
         assertEquals( player.getHealth(), 60 );
     }
+    
+    @Test
+    public void checkIncreaseOver()
+    {
+        player.lowerHealth( 50 );
+        player.increaseHealth( 60 );
+        assertEquals( player.getHealth(), player.getMaxHealth() );
+    }
 
 
     @Test
@@ -441,6 +488,15 @@ public class AdventureTest
         int inc = player.increaseBlock( 10 );
         assertEquals( inc, b + 10 );
     }
+    
+    @Test
+    public void increaseBlockOverTest()
+    {
+        int b = player.getBlock();
+        player.increaseBlock( 1000 );
+        b = player.getBlock();
+        assertEquals( 100, b );
+    }
 
 
     @Test
@@ -483,12 +539,71 @@ public class AdventureTest
         WorldMap m = new WorldMap( 10, 10 );
         Player p = new Player(0, 0, m);
         m.showAround( p );
-        
-        // TODO regular showAround
-        // TODO showAroundRandom
+        assertNotEquals(m.getMap()[1][1].getSquare(), Square.SPACE);
+		
+		m.showAroundRandom();
+    }
+	
+	@Test
+    public void showAroundRandomTests()
+    {
+        WorldMap m = new WorldMap( 10, 10 );
+		m.showAroundRandom();
+		WorldMapSquare[][] w = m.getMap();
+		boolean check = false;
+		for (int i = 0; i < w.length; i++)
+		{
+			for (int j = 0; j < w[i].length; j++)
+			{
+			if (w[i][j].getSquare() != Square.SPACE)
+			{
+				check = true;
+			}
+			}
+		
+		}
+		assertTrue(check);
     }
 
+	@Test
+    public void getMapRowsTest()
+    {
+        WorldMap m = new WorldMap( 12, 10 );
+		assertEquals(m.getMapRows(), 12);
+    }
+	
+	@Test
+    public void getMapColsTest()
+    {
+        WorldMap m = new WorldMap( 12, 10 );
+		assertEquals(m.getMapCols(), 10);
+    }
+	
+	@Test
+    public void getSquareTest()
+    {
+        WorldMap m = new WorldMap( 12, 10 );
+		assertEquals(m.getSquare(0,0), Square.SPACE);
+		assertNull(m.getSquare(-1, 0));
+    }
 
+	@Test
+    public void checkMonsterMapTest()
+    {
+        WorldMap m = new WorldMap( 12, 10 );
+		assertFalse(m.checkMonster(-1,0));
+    }
+	
+	@Test
+    public void setSquareToRoadTest()
+    {
+        WorldMap m = new WorldMap( 12, 10 );
+		m.setSquareToRoad(0,0);
+		assertEquals(m.getSquare(0,0), Square.HASHTAG);
+		
+    }
+	
+	@Test
     public void getMapTest()
     {
         WorldMap m = new WorldMap( 10, 10 );

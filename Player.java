@@ -85,35 +85,35 @@ public class Player
         playerCol = c;
         world = w;
 
-        if ( dmg < 0 )
-        {
-            dmg = 10;
-        }
-        else
-        {
+//        if ( dmg < 0 )
+//        {
+//            dmg = 10;
+//        }
+//        else
+//        {
             dmg = damage;
-        }
-        if ( health < 0 )
-        {
-            health = 100;
-        }
-        else
-        {
+//        }
+//        if ( health < 0 )
+//        {
+//            health = 100;
+//        }
+//        else
+//        {
             health = h;
-        }
-
-        if ( block < 0 )
-        {
-            block = 0;
-        }
-        else if ( block > 100 )
-        {
-            block = 100;
-        }
-        else
-        {
+//        }
+//
+//        if ( block < 0 )
+//        {
+//            block = 0;
+//        }
+//        else if ( block > 100 )
+//        {
+//            block = 100;
+//        }
+//        else
+//        {
             block = b;
-        }
+//        }
 
         maxHealth = health;
         steps = 0;
