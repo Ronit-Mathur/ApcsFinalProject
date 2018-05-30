@@ -17,7 +17,7 @@ import java.awt.Label;
  * @author Period: 4
  * @author Assignment: Adventure
  *
- * @author Sources: TODO
+ * @author Sources: 
  */
 public class AdventureComponent extends JComponent
 {
