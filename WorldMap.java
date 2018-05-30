@@ -53,8 +53,8 @@ public class WorldMap
      */
     private void fillHiddenMap()
     {
-        int row = (int)(Math.random() * map.length);
-        int col = (int)(Math.random() * map.length);
+        int row = (int)(Math.random() * map[0].length);
+        int col = (int)(Math.random() * map[0].length);
         int i = 0;
         while (i < 15)
         {
@@ -64,8 +64,8 @@ public class WorldMap
                 i++;
             }
             i++;
-            row = (int)(Math.random() * map.length);
-            col = (int)(Math.random() * map.length);
+            row = (int)(Math.random() * map[0].length);
+            col = (int)(Math.random() * map[0].length);
         }
         
         i = 0;
@@ -76,8 +76,8 @@ public class WorldMap
                 hiddenMap[row][col] = new WorldMapSquare(Square.H, 0);
                 i++;
             }
-            row = (int)(Math.random() * map.length);
-            col = (int)(Math.random() * map.length);
+            row = (int)(Math.random() * map[0].length);
+            col = (int)(Math.random() * map[0].length);
         }
         
         i = 0;
@@ -88,8 +88,8 @@ public class WorldMap
                 hiddenMap[row][col] = new WorldMapSquare(Square.D, 0);
                 i++;
             }
-            row = (int)(Math.random() * map.length);
-            col = (int)(Math.random() * map.length);
+            row = (int)(Math.random() * map[0].length);
+            col = (int)(Math.random() * map[0].length);
         }
         
         i = 0;
@@ -100,8 +100,8 @@ public class WorldMap
                 hiddenMap[row][col] = new WorldMapSquare(Square.B, 0);
                 i++;
             }
-            row = (int)(Math.random() * map.length);
-            col = (int)(Math.random() * map.length);
+            row = (int)(Math.random() * map[0].length);
+            col = (int)(Math.random() * map[0].length);
         }
         
         
@@ -114,8 +114,8 @@ public class WorldMap
                 i++;
             }
             i++;
-            row = (int)(Math.random() * map.length);
-            col = (int)(Math.random() * map.length);
+            row = (int)(Math.random() * map[0].length);
+            col = (int)(Math.random() * map[0].length);
         }
     }
     
@@ -151,11 +151,11 @@ public class WorldMap
      */
     public void showAroundRandom() 
     {
-        int r = (int)(Math.random() * map.length);
+        int r = (int)(Math.random() * map[0].length);
         int c = (int)(Math.random() * map[r].length);
         while (map[r][c].getSquare() != Square.SPACE)
         {
-            r = (int)(Math.random() * map.length);
+            r = (int)(Math.random() * map[0].length);
             c = (int)(Math.random() * map[r].length);
         }
         for (int i = -4; i <= 4; i++) 
