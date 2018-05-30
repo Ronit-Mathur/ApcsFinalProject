@@ -574,7 +574,7 @@ public class AdventureTest
     public void getSquareTest()
     {
         WorldMap m = new WorldMap( 12, 10 );
-		assertEquals(m.getSquare(0,0).getSquare(), Square.SPACE);
+		assertEquals(m.getSquare(0,0), Square.SPACE);
 		assertNull(m.getSquare(-1, 0));
     }
 
@@ -590,7 +590,7 @@ public class AdventureTest
     {
         WorldMap m = new WorldMap( 12, 10 );
 		m.setSquareToRoad(0,0);
-		assertEquals(m.getSquare(0,0).getSquare(), Square.HASHTAG);
+		assertEquals(m.getSquare(0,0), Square.HASHTAG);
 		
     }
 	
