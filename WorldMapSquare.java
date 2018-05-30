@@ -4,7 +4,7 @@ import java.lang.Math;
  *  Describes each grid square of the WorldMap. Has a chance of holding a
  *  Monster. 
  *
- *  @author  
+ *  @author  Shannon
  *  @version Apr 27, 2018
  *  @author  Period: 4
  *  @author  Assignment: Adventure

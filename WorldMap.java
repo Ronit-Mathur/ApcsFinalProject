@@ -3,7 +3,7 @@
  * 
  *  Grid of the world with an array of each WorldMapSquare space in the grid
  *
- *  @author  
+ *  @author  Shannon, Ronit, Jessabelle
  *  @version Apr 27, 2018
  *  @author  Period: 4
  *  @author  Assignment: Adventure
@@ -27,8 +27,8 @@ public class WorldMap
     /**
      * Creates a grid with a width and height. Fills the map with spaces (from the Square enum)
      * and the hidden map with locations and periods (from the Square enum).
-     * @param width width of grid
-     * @param height height of grid
+     * @param cols width of grid
+     * @param rows height of grid
      */
     public WorldMap(int rows, int cols) {
         map = new WorldMapSquare[rows][cols];

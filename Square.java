@@ -2,7 +2,7 @@
  * 
  *  Constants for the different squares in the WorldMap
  *
- *  @author  
+ *  @author  Shannon
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject

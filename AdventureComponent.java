@@ -12,7 +12,7 @@ import java.awt.Label;
  * 
  * Draws the Adventure game and controls some of it
  *
- * @author
+ * @author Shannon
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: Adventure

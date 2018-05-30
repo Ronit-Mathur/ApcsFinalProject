@@ -6,7 +6,7 @@ import java.util.Queue;
  *  Simulates a battle between a Monster and Player. Affects their
  *  health levels and maximum health.
  *
- *  @author  
+ *  @author  Ronit, Jessabelle
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject
@@ -134,7 +134,7 @@ public class Battle
 
     /**
      * Monster attacks player and lowers the player's health
-     * Says the battle ended if monster atkDmg > player health
+     * Says the battle ended if monster atkDmg - player health
      */
     public void monsterAttack()
     {
@@ -153,7 +153,7 @@ public class Battle
 
     /**
      * Player attacks monster and lowers the monster's health
-     * Says the battle ended if player's atkDmg > monster health
+     * Says the battle ended if player's atkDmg - monster health
      */
     public void playerAttack()
     {

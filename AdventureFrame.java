@@ -11,7 +11,7 @@ import java.awt.event.WindowListener;
  * Describes the JFrame the Adventure game should open in Also controls the game
  * // TODO
  *
- * @author
+ * @author Shannon
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: Adventure

@@ -3,7 +3,7 @@
  *  An entity that can hurt the health of the Player and fights
  *  against the Player in Battles. Has a damage and health.
  *
- *  @author  
+ *  @author  Ronit
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject

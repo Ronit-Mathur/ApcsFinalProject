@@ -2,7 +2,7 @@
  * 
  *  A type of monster called "Papa Peck" with a health and damage.
  *
- *  @author  
+ *  @author  Jessabelle
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject

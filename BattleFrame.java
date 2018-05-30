@@ -9,7 +9,7 @@ import javax.swing.JPanel;
  *  Creates the window of the Battle between a Monster
  *  and a Player
  *
- *  @author  
+ *  @author  Shannon
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject

@@ -5,7 +5,7 @@ import javax.swing.JFrame;
  * 
  * Opens a window with the Adventure game
  *
- * @author
+ * @author Shannon, Ronit, Jessabelle
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: Adventure

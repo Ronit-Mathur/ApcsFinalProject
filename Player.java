@@ -4,7 +4,7 @@
  * Monsters while trying to keep health over 0, and can
  * act against Monsters.
  *
- * @author
+ * @author Ronit, Shannon, Jessabelle 
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: ApcsFinalProject

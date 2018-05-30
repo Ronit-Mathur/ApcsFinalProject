@@ -4,7 +4,7 @@
  *  with the KeyListener to determine how to act depending on 
  *  the directions given.
  *
- *  @author  
+ *  @author  Shannon
  *  @version May 29, 2018
  *  @author  Period: 4
  *  @author  Assignment: ApcsFinalProject
