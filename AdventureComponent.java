@@ -43,7 +43,7 @@ public class AdventureComponent extends JComponent
 
 
     /**
-     * Creates the aspects of the game
+     * Creates the drawings of the game
      */
     public AdventureComponent()
     {
@@ -262,7 +262,7 @@ public class AdventureComponent extends JComponent
     /**
      * Checks whether the player will encounter a monster
      * 
-     * @return
+     * @return true if there is a monster on the square the Player is on. false if not.
      */
     public boolean checkMonster()
     {
@@ -273,7 +273,7 @@ public class AdventureComponent extends JComponent
     /**
      * Checks if the player is dead, would trigger a game over
      * 
-     * @return true if dead
+     * @return true if the player is dead
      */
     public boolean checkPlayerDeath()
     {

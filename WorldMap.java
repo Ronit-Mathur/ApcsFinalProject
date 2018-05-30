@@ -1,7 +1,7 @@
-import java.util.*;
+
 /**
  * 
- *  Grid of the world with an array of each block in the grid
+ *  Grid of the world with an array of each WorldMapSquare space in the grid
  *
  *  @author  
  *  @version Apr 27, 2018
@@ -13,11 +13,20 @@ import java.util.*;
 
 public class WorldMap
 {
+    /**
+     * The array displayed to the player
+     */
     private WorldMapSquare[][] map;
+    
+    /**
+     * The secret array with the locations and exit the
+     * Player tries to discover.
+     */
     private WorldMapSquare[][] hiddenMap;
     
     /**
-     * Creates a grid with a width and height
+     * Creates a grid with a width and height. Fills the map with spaces (from the Square enum)
+     * and the hidden map with locations and periods (from the Square enum).
      * @param width width of grid
      * @param height height of grid
      */
@@ -38,6 +47,10 @@ public class WorldMap
     }
     
     
+    /**
+     * Adds locations to the hidden map. Creates 15 'P', 5 'H', 
+     * 5 'D', 2 'B', and one exit ('E')
+     */
     private void fillHiddenMap()
     {
         int row = (int)(Math.random() * map.length);
@@ -91,17 +104,6 @@ public class WorldMap
             col = (int)(Math.random() * map.length);
         }
         
-//        i = 0;
-//        while (i < 60)
-//        {
-//            if (!isLocation(row, col))
-//            {
-//                hiddenMap[row][col] = new WorldMapSquare(Square.M, 100);
-//                i++;
-//            }
-//            row = (int)(Math.random() * map.length);
-//            col = (int)(Math.random() * map.length);
-//        }
         
         i = 0;
         while (i < 1)
@@ -117,6 +119,11 @@ public class WorldMap
         }
     }
     
+    /**
+     * Reveals on the map what's around the player in the 
+     * hidden map. Uses the player's location to show around.
+     * @param p the player to reveal squares around
+     */
     public void showAround(Player p) 
     {
         int pRow = p.getPlayerRow();
@@ -137,6 +144,11 @@ public class WorldMap
         }
     }
     
+    /**
+     * Randomly picks a location on the map that is still hidden
+     * to show around (by copying what's on the hidden map to the 
+     * visible map).
+     */
     public void showAroundRandom() 
     {
         int r = (int)(Math.random() * map.length);
@@ -186,6 +198,13 @@ public class WorldMap
         return map[0].length;
     }
     
+    /**
+     * Returns the WorldMap square at a row/col combination on the grid.
+     * @param r the row of the square (from 0)
+     * @param c the column of the square (from 0)
+     * @return the WorldMapSquare at the row/col location, or null if the location
+     * isn't valid.
+     */
     public WorldMapSquare getSquare(int r, int c) {
       if (checkValid(r, c)) {
           return map[r][c];
@@ -195,6 +214,13 @@ public class WorldMap
       }
     }
     
+    /**
+     * Checks to see if the WorldMapSquare at a row and column contains a Monster.
+     * @param r the row of the square (from 0)
+     * @param c the column of the square (from 0)
+     * @return true if the square at row/column has a monster. false if there's no
+     * Monster or if the row/column isn't valid.
+     */
     public boolean checkMonster(int r, int c) {
         if (checkValid(r, c)) {
             return getSquare(r, c).checkMonster();
@@ -212,6 +238,12 @@ public class WorldMap
         return !(r < 0 || r >= map.length || c < 0 || c >= map[0].length);
     }
     
+    /**
+     * Sets the WorldMapSquare at a row and column to a Square.HASHTAG with
+     * 0 danger on the visible and hidden map.
+     * @param r the row of the square (from 0)
+     * @param c the column of the square (from 0)
+     */
     public void setSquareToRoad(int r, int c) 
     {
         if (!isLocation(r, c))
@@ -222,6 +254,14 @@ public class WorldMap
         
     }
     
+    /**
+     * Checks if the square at a row and column is a location, which means it isn't
+     * a period. Locations are the other Square enum characters.
+     * @param r the row of the square (from 0)
+     * @param c the column of the square (from 0)
+     * @return true if the WorldMapSquare is a location, false if it isn't a location or
+     * the row/column combination isn't on the map.
+     */
     private boolean isLocation(int r, int c) 
     {
         if (checkValid(r, c)) 
@@ -231,12 +271,5 @@ public class WorldMap
         return false;
     }
     
-    public void reset() {
-//        map = new WorldMapSquare[getMapRows()][getMapCols()];
-//        for (int r = 0; r < getMapRows(); r++) {
-//            for (int c = 0; c < getMapCols(); c++) {
-//                map[r][c] = new WorldMapSquare(Square.PERIOD, 15);
-//            }
-//        }
-    }
+  
 }

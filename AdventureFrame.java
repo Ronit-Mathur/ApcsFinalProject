@@ -20,20 +20,58 @@ import java.awt.event.WindowListener;
  */
 public class AdventureFrame extends JFrame
 {
+    /**
+     * The drawing to display in the JFrame
+     */
     private AdventureComponent scene;
 
+    /**
+     * The width of the window
+     */
     private static final int FRAME_WIDTH = 800;
 
+    /**
+     * The height of the window
+     */
     private static final int FRAME_HEIGHT = 500;
 
+    /**
+     * A custom KeyListener so the user can interact
+     * with the game
+     */
     private PlayerMovementKeyListener keyListener;
+    
+    /**
+     * Allows/prevents the key listener from acting in certain conditions.
+     */
     private boolean canMove;
 
+    /**
+     * 
+     *  Listens for keyboard controls for the player.
+     *  Looks for WASD to move.
+     *
+     *  @author  
+     *  @version May 29, 2018
+     *  @author  Period: 4
+     *  @author  Assignment: ApcsFinalProject
+     *
+     *  @author  Sources: 
+     */
     class PlayerMovementKeyListener implements KeyListener
     {
+        /**
+         * Tracks whether the key is pressed down already to
+         * prevent unintentional multiple presses.
+         */
         private boolean pressed;
 
 
+        /**
+         * Checks whether a key was pressed down. If it
+         * is the movement keys (WASD), it updates the 
+         * drawing and the position of the player.
+         */
         public void keyPressed( KeyEvent k )
         {
             if ( !pressed && canMove )
@@ -74,19 +112,31 @@ public class AdventureFrame extends JFrame
         }
 
 
+        /**
+         * Checks to see if the key was released, so
+         * there aren't multiple presses registered
+         * if the key is held down.
+         */
         public void keyReleased( KeyEvent k )
         {
             pressed = false;
         }
 
 
+        /**
+         * Required method in the class. Not implemented.
+         */
         public void keyTyped( KeyEvent k )
         {
 
         }
     }
 
-    // TODO: Check if you're on a monster. Start battle.
+    /**
+     * Called each time the players moves to check if there
+     * is a monster. If so, it creates a Battle and opens
+     * a new window for the Battle interactive interface.
+     */
     private void checkMonster() {
         if(scene.checkMonster()) {
             System.out.println("monster");
@@ -98,6 +148,9 @@ public class AdventureFrame extends JFrame
                 @Override
                 public void windowActivated( WindowEvent arg0 ) {}
 
+                /**
+                 * Makes the Adventure JFrame interactive after the Battle JFrame is closed
+                 */
                 @Override
                 public void windowClosed( WindowEvent arg0 )
                 {
@@ -134,6 +187,10 @@ public class AdventureFrame extends JFrame
             System.out.println( "no monster" );
         }
     }
+    
+    /**
+     * Checks if the game is over. If so, it resets what's displayed.
+     */
     private void checkWon()
     {
         if (scene.checkExit()) 
@@ -141,26 +198,20 @@ public class AdventureFrame extends JFrame
             resetScene();
         }
     }
+    
+    /**
+     * Removes the key listener from the scene so the 
+     * user can't interact with it anymore
+     */
     private void resetScene() 
     {
-//        getContentPane().remove( scene );
-//        getContentPane().repaint();
         scene.removeKeyListener( keyListener );
-//        scene = new AdventureComponent();
-//        add( scene );
-//        setSize( FRAME_WIDTH, FRAME_HEIGHT );
-//        setBackground(Color.WHITE);
-//        
-//        canMove = true;
-//        
-//        keyListener = new PlayerMovementKeyListener();
-//        scene.addKeyListener( keyListener );
-//        getContentPane().repaint();
-//        scene.setFocusable( true );
     }
 
     /**
      * Sets parameters of the JFrame and adds the Adventure game to it
+     * Sets up the KeyListener and allows the user to begin interacting
+     * with the window.
      */
     public AdventureFrame()
     {

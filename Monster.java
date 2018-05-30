@@ -1,4 +1,15 @@
-
+/**
+ * 
+ *  An entity that can hurt the health of the Player and fights
+ *  against the Player in Battles. Has a damage and health.
+ *
+ *  @author  
+ *  @version May 29, 2018
+ *  @author  Period: 4
+ *  @author  Assignment: ApcsFinalProject
+ *
+ *  @author  Sources: 
+ */
 public class Monster
 {
     /**
@@ -18,6 +29,7 @@ public class Monster
 
 
     /**
+     * Creates a Monster with a damage and health level
      * @param d
      *            dmg
      * @param h
@@ -44,7 +56,8 @@ public class Monster
 
 
     /**
-     * @return damge
+     * Returns a random damage between 0.5 to 1.5 times of the damage value.
+     * @return a random damage value
      */
     public int getDamage()
     {
@@ -53,6 +66,7 @@ public class Monster
 
 
     /**
+     * Returns the remaining health
      * @return health remaining
      */
     public int getHealth()

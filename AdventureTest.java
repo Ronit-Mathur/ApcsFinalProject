@@ -290,16 +290,7 @@ public class AdventureTest
     }
 
 
-    /**
-     * tests constructor and getName() for Shannonster
-     */
-    @Test
-    public void ShannonsterConstructor()
-    {
-        Monster sh = new Shannonster();
-        assertNotNull( sh );
-        assertEquals( "Shannonster", sh.getName() );
-    }
+    
     
     
     //PLAYER TESTS

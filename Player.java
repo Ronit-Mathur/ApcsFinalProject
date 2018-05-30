@@ -1,13 +1,15 @@
 /**
  * 
- * Location of the player on the map
+ * A player the user control which moves around the map, fights
+ * Monsters while trying to keep health over 0, and can
+ * act against Monsters.
  *
  * @author
  * @version Apr 27, 2018
  * @author Period: 4
  * @author Assignment: ApcsFinalProject
  *
- * @author Sources: TODO
+ * @author Sources: 
  */
 public class Player
 {
@@ -85,35 +87,9 @@ public class Player
         playerCol = c;
         world = w;
 
-//        if ( dmg < 0 )
-//        {
-//            dmg = 10;
-//        }
-//        else
-//        {
-            dmg = damage;
-//        }
-//        if ( health < 0 )
-//        {
-//            health = 100;
-//        }
-//        else
-//        {
-            health = h;
-//        }
-//
-//        if ( block < 0 )
-//        {
-//            block = 0;
-//        }
-//        else if ( block > 100 )
-//        {
-//            block = 100;
-//        }
-//        else
-//        {
-            block = b;
-//        }
+        dmg = damage;
+        health = h;
+        block = b;
 
         maxHealth = health;
         steps = 0;
@@ -247,10 +223,10 @@ public class Player
 
 
     /**
-     * Checks whether player's move is valid and within grid
-     * @param r row player is moving to
-     * @param c column player is moving to
-     * @return true if within the grid
+     * Checks whether a location is valid and within the map
+     * @param r row number to check
+     * @param c column number to check
+     * @return true if within the map
      */
     private boolean checkMove( int r, int c )
     {
@@ -292,6 +268,7 @@ public class Player
 
     /**
      * Calculates random damage player deals with an attack
+     * between 0.5 and 1.5 the base damage.
      * @return damage
      */
     public int getDamage()
@@ -310,6 +287,12 @@ public class Player
     }
 
 
+    /**
+     * Lowers the health of the player. If the health is
+     * lowered below 0, the health is set to 0
+     * @param d the amount to lower health by
+     * @return the Player's health after being lowered
+     */
     public int lowerHealth( int d )
     {
         health -= d;
@@ -355,8 +338,8 @@ public class Player
 
 
     /**
-     * Heals player completely
-     * @return health
+     * Heals player completely to maxHealth
+     * @return health of the player
      */
     public int increaseHealthToMax()
     {
@@ -403,12 +386,21 @@ public class Player
     }
 
 
+    /**
+     * Returns the count of steps (movements) the
+     * Player has done
+     * @return the number of steps
+     */
     public int getSteps()
     {
         return steps;
     }
 
 
+    /**
+     * Returns the world the Player is in
+     * @return the WorldMap the player interacts with
+     */
     public WorldMap getWorld()
     {
         return world;

@@ -15,6 +15,10 @@ import javax.swing.JFrame;
 public class AdventureViewer
 {
 
+    /**
+     * Main method to start the game. Opens the JFrame.
+     * @param args default main argument
+     */
     public static void main( String[] args )
     {
         JFrame frame = new AdventureFrame();
